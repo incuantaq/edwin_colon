@@ -1,0 +1,51 @@
+---
+---
+<section class="careers-form">
+  <div class="container mt-10 mx-auto py-16 flex items-center flex-col">
+    <h3 class="max-w-[1100px] w-full text-gray-15 font-bold text-4xl mb-12">Estoy interesado!</h3>
+    <form action="https://formspree.io/f/xnqlzqzq" method="POST" class="max-w-[1100px] w-full flex flex-wrap gap-5">
+      <p>Hola mi nombre es </p>
+      <input type="text" name="name" id="name" required placeholder="Nombre">
+      <p>mi número de contacto es </p>
+      <input type="tel" name="Telefono" id="telefono" required placeholder="Telefono">
+      <p>y mi email </p>
+      <input type="email" name="email" id="email" required placeholder="Email" class="min-w-[270px]">
+      <p>Estoy listo para ser parte del equipo!</p>
+      <div class="w-full">
+        <button type="submit">Enviar</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<style scoped>
+  .careers-form{
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,0.00001) 0%, rgba(250,220,147,1) 14%, rgba(249,194,63,1) 37%);
+  }
+
+  p{
+    font-size: 28px;
+    line-height: 56px;
+    color: #1a1a1a;
+  }
+
+  input{
+    text-align: center;
+    appearance: none;
+    background-color: transparent;
+    border-bottom: 1px solid #1a1a1a;
+  }
+
+  input::placeholder{
+    color: #393939;
+  }
+
+  button[type="submit"]{
+    background-color: #1a1a1a;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-weight: bold;
+  }
+</style>
