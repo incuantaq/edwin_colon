@@ -1,29 +1,52 @@
 ---
+import Cotizacion from '../components/Cotizacion';
+import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
 ---
-<section>
-  <div class="container mx-auto">
-    <input type="text" placeholder="Nombre completo">
-    <input type="email" placeholder="Correo electronico">
-    <input type="tel" placeholder="Telfono">
-    <input type="text" placeholder="Direccion">
-  </div>
-  <div class="container mx-auto">
-    <div id="pick-prod">
-      <h3>En que producto estas interesado?</h3>
-      <div class="w-full px-5 py-6 rounded-md">
-        <h2>Placas Solares</h2>
-      </div>
-      <div>
-        <h2>Baterias Anker</h2>
-      </div>
-      <div>
-        <h2>Roofing</h2>
-      </div>
+<Layout title="Cotizar" hasHero={false}>
+  <form id="cotizador" class="flex flex-col gap-5 container mx-auto">
+    <h3>Información de contacto</h3>
+    <div>
+      <input type="text" id="full_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Nombre completo" required />
+      <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Email" required />
+      <input type="tel" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Telefono" required />
+      <input type="text" id="adress" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Dirección" required />
     </div>
-  </div>
-</section>
+    <Cotizacion client:load />
+    <div class="text-center">
+      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Cotizar</button>
+    </div>
+  </form>
+</Layout>
 
 <script>
   console.log("Hello from Cotizar.astro");
+  const $ = (selector) => document.querySelector(selector);
+  const $$ = (selector) => document.querySelectorAll(selector);
+  const form = $("#cotizador");
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    const inputs = form.querySelectorAll("input");
+    const data = {};
+    inputs.forEach((input) => {
+      data[input.id] = input.value;
+    });
+    console.log(data);
+  };
+
+  form.addEventListener("submit", submitForm);
 </script>
+
+<style is:global>
+  .product-picker {
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .product-picker.selected {
+    --primary: #1538a9;
+    border-color: var(--primary);
+    border-width: 2px;
+    color: var(--primary);
+  }
+</style>
