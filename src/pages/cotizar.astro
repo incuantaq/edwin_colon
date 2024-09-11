@@ -1,10 +1,11 @@
 ---
 import Cotizacion from '../components/Cotizacion';
+import SalesForm from '../components/SalesForm.astro';
 import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
 ---
 <Layout title="Cotizar" hasHero={false}>
-  <form id="cotizador" class="flex flex-col gap-5 container mx-auto">
+  <form id="cotizador" class="flex flex-col gap-5 container mx-auto py-10">
     <h3>Información de contacto</h3>
     <div>
       <input type="text" id="full_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Nombre completo" required />
@@ -17,6 +18,7 @@ import '../styles/global.css';
       <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Cotizar</button>
     </div>
   </form>
+  <SalesForm />
 </Layout>
 
 <script>
