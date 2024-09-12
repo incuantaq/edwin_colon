@@ -5,50 +5,164 @@ import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
 ---
 <Layout title="Cotizar" hasHero={false}>
-  <form id="cotizador" class="flex flex-col gap-5 container mx-auto py-10">
-    <h3>Información de contacto</h3>
-    <div>
-      <input type="text" id="full_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Nombre completo" required />
-      <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Email" required />
-      <input type="tel" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Telefono" required />
-      <input type="text" id="adress" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Dirección" required />
+  <form id="cotizador" class="flex flex-col flex-wrap md:flex-row container mx-auto py-10 pricer-wrapper">
+    <div class="w-full md:w-1/2 md:pr-5">
+      <h3 class="pb-4">Información de contacto</h3>
+      <div>
+        <input type="text" id="full_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Nombre completo" required />
+        <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Email" required />
+        <input type="tel" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Telefono" required />
+        <input type="text" id="adress" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Dirección" required />
+      </div>
+      <div class="text-center md:text-left w-full mt-6">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Cotizar</button>
+      </div>
     </div>
     <Cotizacion client:load />
-    <div class="text-center">
-      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Cotizar</button>
-    </div>
   </form>
   <SalesForm />
 </Layout>
 
 <script>
-  console.log("Hello from Cotizar.astro");
-  const $ = (selector) => document.querySelector(selector);
-  const $$ = (selector) => document.querySelectorAll(selector);
-  const form = $("#cotizador");
+  document.addEventListener('DOMContentLoaded', function() {
+    const customForm = document.getElementById('cotizador');
+    const zohoForm = document.getElementById('webform6418949000000513177') as HTMLFormElement;
 
-  const submitForm = (e) => {
-    e.preventDefault();
-    const inputs = form.querySelectorAll("input");
-    const data = {};
-    inputs.forEach((input) => {
-      data[input.id] = input.value;
+    function validateEmail6418949000000513177()
+    {
+      let form = document.forms['WebToLeads6418949000000513177'];
+      let emailFld = form.querySelectorAll('[ftype=email]');
+      let i;
+      for (i = 0; i < emailFld.length; i++)
+      {
+        let emailVal = emailFld[i].value;
+        if((emailVal.replace(/^\s+|\s+$/g, '')).length!=0 )
+        {
+          let atpos=emailVal.indexOf('@');
+          let dotpos=emailVal.lastIndexOf('.');
+          if (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailVal.length)
+          {
+            alert('Please enter a valid email address. ');
+            emailFld[i].focus();
+            return false;
+          }
+        }
+      }
+      return true;
+    }
+
+    function checkMandatory6418949000000513177() {
+      let mndFileds = new Array('Last Name');
+      let fldLangVal = new Array('Last\x20Name');
+      for(let i=0;i<mndFileds.length;i++) {
+        let fieldObj=document.forms['WebToLeads6418949000000513177'][mndFileds[i]];
+        if(fieldObj) {
+        if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length==0) {
+         if(fieldObj.type =='file')
+          { 
+           alert('Please select a file to upload.'); 
+           fieldObj.focus(); 
+           return false;
+          } 
+        alert(fldLangVal[i] +' cannot be empty.'); 
+                  fieldObj.focus();
+                  return false;
+        }  else if(fieldObj.nodeName=='SELECT') {
+                 if(fieldObj.options[fieldObj.selectedIndex].value=='-None-') {
+          alert(fldLangVal[i] +' cannot be none.'); 
+          fieldObj.focus();
+          return false;
+           }
+        } else if(fieldObj.type =='checkbox'){
+            if(fieldObj.checked == false){
+          alert('Please accept  '+fldLangVal[i]);
+          fieldObj.focus();
+          return false;
+           } 
+         } 
+         try {
+             if(fieldObj.name == 'Last Name') {
+          const lastNameValue = fieldObj.value;
+               }
+        } catch (e) {}
+          }
+      }
+      if(!validateEmail6418949000000513177()){return false;}
+      
+    let urlparams = new URLSearchParams( window.location.search);
+    if(urlparams.has('service') && (urlparams.get('service')==='smarturl')){
+      let webform = document.getElementById('webform6418949000000513177');
+       let service =  urlparams.get('service'); 
+      let smarturlfield = document.createElement('input');
+      smarturlfield.setAttribute('type','hidden');
+      smarturlfield.setAttribute('value',service);
+      smarturlfield.setAttribute('name','service');
+      webform.appendChild(smarturlfield); 
+    }
+  
+      document.querySelector('.crmWebToEntityForm .formsubmit').setAttribute('disabled', "true");
+    }
+
+    customForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const fullName = (document.getElementById('full_name') as HTMLInputElement).value;
+      const email = (document.getElementById('email') as HTMLInputElement).value;
+      const phone = (document.getElementById('phone') as HTMLInputElement).value;
+      const address = (document.getElementById('address') as HTMLInputElement).value;
+
+      // Split full name into first and last name
+      const nameParts = fullName.split(' ');
+      const firstName = nameParts[0];
+      const lastName = nameParts.slice(1).join(' ') || firstName;
+
+      // Fill Zoho form
+      (zohoForm.querySelector('#First_Name') as HTMLInputElement).value = firstName;
+      (zohoForm.querySelector('#Last_Name') as HTMLInputElement).value = lastName;
+      (zohoForm.querySelector('#Email') as HTMLInputElement).value = email;
+      (zohoForm.querySelector('#Mobile') as HTMLInputElement).value = phone;
+      (zohoForm.querySelector('#Street') as HTMLInputElement).value = address;
+
+      // Get selected product
+      const selectedProduct = document.querySelector('.product-picker.selected') as HTMLElement;
+      const productName = selectedProduct ? selectedProduct.textContent : 'No product selected';
+
+      // Set description
+      (zohoForm.querySelector('#Description') as HTMLTextAreaElement).value = `Producto de interés: ${productName}`;
+
+      // Submit Zoho form
+      if (checkMandatory6418949000000513177()) {
+        zohoForm.submit();
+      }
     });
-    console.log(data);
-  };
-
-  form.addEventListener("submit", submitForm);
+  });
 </script>
 
 <style is:global>
   .product-picker {
     cursor: pointer;
     font-weight: bold;
+    text-align: center;
+    width: 30%;
   }
   .product-picker.selected {
     --primary: #1538a9;
     border-color: var(--primary);
     border-width: 2px;
     color: var(--primary);
+  }
+
+  #crmWebToEntityForm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1000;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .pricer-wrapper{
+    min-height: calc(100% - 300px);
   }
 </style>

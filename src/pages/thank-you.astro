@@ -1,11 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
+import '../styles/global.css';
 ---
 <Layout title="Gracias" hasHero={false}>
-  <img src="/img/thank-you.svg" alt="Gracias por tu compra" class="mx-auto" />
-  <div class="container mx-auto py-10">
-    <h1 class="text-3xl font-bold text-center">Gracias por tu compra</h1>
-    <p class="text-center">Recibirás un correo con los detalles de tu compra</p>
+  <div class="container mx-auto flex items-center h-3/4">
+    <img src="/images/ty.png" alt="Gracias por tu compra" class="mx-auto" />
+    <div class="py-10">
+      <h1 class="text-3xl font-bold text-center">Gracias por tu compra</h1>
+      <p class="text-center">Recibirás un correo con los detalles de tu compra</p>
+    </div>
   </div>
 </Layout>

@@ -2,15 +2,19 @@
 ---
 <section class="careers-form">
   <div class="container mt-10 mx-auto py-16 flex items-center flex-col">
-    <h3 class="max-w-[1100px] w-full text-gray-15 font-bold text-4xl mb-12">Estoy interesado!</h3>
-    <form class="max-w-[1100px] w-full flex flex-wrap gap-5">
+    <h3 class="max-w-screen-md w-full text-gray-15 font-bold text-4xl mb-12">Estoy interesado!</h3>
+    <form class="max-w-screen-md w-full flex flex-wrap gap-5">
       <p>Hola mi nombre es </p>
       <input type="text" name="name" id="name" required placeholder="Nombre">
       <p>mi número de contacto es </p>
       <input type="tel" name="Telefono" id="telefono" required placeholder="Telefono">
       <p>y mi email </p>
       <input type="email" name="email" id="email" required placeholder="Email" class="min-w-[270px]">
-      <p>Estoy listo para ser parte del equipo!</p>
+      <p class="w-full">Estoy listo para ser parte del equipo!</p>
+      <div class="flex items-center">
+        <input required id="link-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+        <label for="link-checkbox" class="ms-2 text-sm font-medium text-gray-900">Estoy de acuerdo <a target="_blank" href="/legal" class="text-[#1538a9] hover:underline">términos y condiciones</a>.</label>
+    </div>
       <div class="w-full">
         <button type="submit">Enviar</button>
       </div>
@@ -73,7 +77,7 @@
     color: #1a1a1a;
   }
 
-  input{
+  input[type="text"], input[type="email"], input[type="tel"]{
     text-align: center;
     appearance: none;
     background-color: transparent;
@@ -130,16 +134,16 @@
 
 function validateEmail6418949000000513122()
 {
-  var form = document.forms['WebToLeads6418949000000513122'];
-  var emailFld = form.querySelectorAll('[ftype=email]');
-  var i;
+  let form = document.forms['WebToLeads6418949000000513122'];
+  let emailFld = form.querySelectorAll('[ftype=email]');
+  let i;
   for (i = 0; i < emailFld.length; i++)
   {
-    var emailVal = emailFld[i].value;
+    let emailVal = emailFld[i].value;
     if((emailVal.replace(/^\s+|\s+$/g, '')).length!=0 )
     {
-      var atpos=emailVal.indexOf('@');
-      var dotpos=emailVal.lastIndexOf('.');
+      let atpos=emailVal.indexOf('@');
+      let dotpos=emailVal.lastIndexOf('.');
       if (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailVal.length)
       {
         alert('Please enter a valid email address. ');
@@ -152,10 +156,10 @@ function validateEmail6418949000000513122()
 }
 
 function checkMandatory6418949000000513122() {
-  var mndFileds = new Array('Last Name');
-  var fldLangVal = new Array('Last\x20Name');
+  let mndFileds = new Array('Last Name');
+  let fldLangVal = new Array('Last\x20Name');
   for(let i=0;i<mndFileds.length;i++) {
-    var fieldObj=document.forms['WebToLeads6418949000000513122'][mndFileds[i]];
+    let fieldObj=document.forms['WebToLeads6418949000000513122'][mndFileds[i]];
     if(fieldObj) {
       if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length==0) {
         alert(fldLangVal[i] +' cannot be empty.'); 

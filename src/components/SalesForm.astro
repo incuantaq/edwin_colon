@@ -33,8 +33,8 @@
     <script>
       function addAriaSelected6418949000000513177()
       {
-        var optionElem = event.target;
-        var previousSelectedOption = (optionElem as HTMLSelectElement).querySelector('[aria-selected=true]');
+        let optionElem = event.target;
+        let previousSelectedOption = (optionElem as HTMLSelectElement).querySelector('[aria-selected=true]');
         if(previousSelectedOption){
           previousSelectedOption.removeAttribute('aria-selected');
         }
@@ -42,16 +42,16 @@
       }
     function validateEmail6418949000000513177()
     {
-      var form = document.forms['WebToLeads6418949000000513177'];
-      var emailFld = form.querySelectorAll('[ftype=email]');
-      var i;
+      let form = document.forms['WebToLeads6418949000000513177'];
+      let emailFld = form.querySelectorAll('[ftype=email]');
+      let i;
       for (i = 0; i < emailFld.length; i++)
       {
-        var emailVal = emailFld[i].value;
+        let emailVal = emailFld[i].value;
         if((emailVal.replace(/^\s+|\s+$/g, '')).length!=0 )
         {
-          var atpos=emailVal.indexOf('@');
-          var dotpos=emailVal.lastIndexOf('.');
+          let atpos=emailVal.indexOf('@');
+          let dotpos=emailVal.lastIndexOf('.');
           if (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailVal.length)
           {
             alert('Please enter a valid email address. ');
@@ -64,10 +64,10 @@
     }
   
     function checkMandatory6418949000000513177() {
-      var mndFileds = new Array('Last Name');
-      var fldLangVal = new Array('Last\x20Name');
+      let mndFileds = new Array('Last Name');
+      let fldLangVal = new Array('Last\x20Name');
       for(let i=0;i<mndFileds.length;i++) {
-        var fieldObj=document.forms['WebToLeads6418949000000513177'][mndFileds[i]];
+        let fieldObj=document.forms['WebToLeads6418949000000513177'][mndFileds[i]];
         if(fieldObj) {
         if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length==0) {
          if(fieldObj.type =='file')
@@ -101,11 +101,11 @@
       }
       if(!validateEmail6418949000000513177()){return false;}
       
-    var urlparams = new URLSearchParams( window.location.search);
+    let urlparams = new URLSearchParams( window.location.search);
     if(urlparams.has('service') && (urlparams.get('service')==='smarturl')){
-      var webform = document.getElementById('webform6418949000000513177');
-       var service =  urlparams.get('service'); 
-      var smarturlfield = document.createElement('input');
+      let webform = document.getElementById('webform6418949000000513177');
+       let service =  urlparams.get('service'); 
+      let smarturlfield = document.createElement('input');
       smarturlfield.setAttribute('type','hidden');
       smarturlfield.setAttribute('value',service);
       smarturlfield.setAttribute('name','service');
@@ -116,10 +116,10 @@
     }
   
   function tooltipShow6418949000000513177(el){
-    var tooltip = el.nextElementSibling;
-    var tooltipDisplay = tooltip.style.display;
+    let tooltip = el.nextElementSibling;
+    let tooltipDisplay = tooltip.style.display;
     if(tooltipDisplay == 'none'){
-      var allTooltip = document.getElementsByClassName('zcwf_tooltip_over');
+      let allTooltip = document.getElementsByClassName('zcwf_tooltip_over');
       for(let i=0; i<allTooltip.length; i++){
         (allTooltip[i] as HTMLElement).style.display='none';
       }

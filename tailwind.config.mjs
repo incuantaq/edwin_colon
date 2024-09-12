@@ -8,7 +8,7 @@ export default {
         'secondary': '#4884AA',
         'gray-15': '#1A1A1A',
         'gray-55': '#636363',
-      },
+      }
     },
 	},
 	plugins: [],
