@@ -68,7 +68,7 @@ const Cotizacion = () => {
   }
 
   return (
-    <div class="w-full md:w-1/2">
+    <div className="w-full md:w-1/2">
       <div id="pick-prod" className='flex flex-wrap gap-3 mt-4 md:mt-0'>
         <h3 className='w-full'>¿En qué producto estás interesado?</h3>
         {products.map((product) => (

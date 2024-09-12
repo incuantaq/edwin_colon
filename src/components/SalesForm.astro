@@ -1,6 +1,22 @@
 ---
----
+import Cotizacion from "./Cotizacion";
 
+---
+<form id="cotizador" class="flex flex-col flex-wrap md:flex-row container mx-auto py-10 pricer-wrapper">
+  <div class="w-full md:w-1/2 md:pr-5">
+    <h3 class="pb-4">Información de contacto</h3>
+    <div>
+      <input type="text" id="full_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Nombre completo" required />
+      <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Email" required />
+      <input type="tel" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Telefono" required />
+      <input type="text" id="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Dirección" required />
+    </div>
+    <div class="text-center md:text-left w-full mt-6">
+      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Cotizar</button>
+    </div>
+  </div>
+  <Cotizacion client:load />
+</form>
 
    <div id='crmWebToEntityForm' class='zcwf_lblLeft crmWebToEntityForm' style='background-color: white;color: black;max-width: 600px;'>
      
@@ -30,30 +46,58 @@
         <option value='Web&#x20;Research'>Web Research</option>
         <option value='Chat'>Chat</option>
       </select><div class='zcwf_col_help'></div></div></div><div class='zcwf_row'><div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'><label for='Description'>Description</label></div><div class='zcwf_col_fld'><textarea aria-multiline='true' id='Description' aria-required='false' aria-label='Description' name='Description'></textarea><div class='zcwf_col_help'></div></div></div><div class='zcwf_row'><div class='zcwf_col_lab'></div><div class='zcwf_col_fld'><input type='submit' id='formsubmit' role='button' class='formsubmit zcwf_button' value='Submit' aria-label='Submit' title='Submit'><input type='reset' class='zcwf_button' role='button' name='reset' value='Reset' aria-label='Reset' title='Reset'></div></div>
-    <script>
-      function addAriaSelected6418949000000513177()
-      {
-        let optionElem = event.target;
-        let previousSelectedOption = (optionElem as HTMLSelectElement).querySelector('[aria-selected=true]');
-        if(previousSelectedOption){
-          previousSelectedOption.removeAttribute('aria-selected');
+
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const customForm = document.getElementById('cotizador');
+      const zohoForm = document.getElementById('webform6418949000000513177') as HTMLFormElement;
+  
+      customForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+  
+        const fullName = (document.getElementById('full_name') as HTMLInputElement).value;
+        const email = (document.getElementById('email') as HTMLInputElement).value;
+        const phone = (document.getElementById('phone') as HTMLInputElement).value;
+        const address = (document.getElementById('address') as HTMLInputElement).value;
+  
+        // Split full name into first and last name
+        const nameParts = fullName.split(' ');
+        const firstName = nameParts[0];
+        const lastName = nameParts.slice(1).join(' ') || firstName;
+  
+        // Fill Zoho form
+        (zohoForm.querySelector('#First_Name') as HTMLInputElement).value = firstName;
+        (zohoForm.querySelector('#Last_Name') as HTMLInputElement).value = lastName;
+        (zohoForm.querySelector('#Email') as HTMLInputElement).value = email;
+        (zohoForm.querySelector('#Mobile') as HTMLInputElement).value = phone;
+        (zohoForm.querySelector('#Street') as HTMLInputElement).value = address;
+  
+        // Get selected product
+        const selectedProduct = document.querySelector('.product-picker.selected') as HTMLElement;
+        const productName = selectedProduct ? selectedProduct.textContent : 'No product selected';
+  
+        // Set description
+        (zohoForm.querySelector('#Description') as HTMLTextAreaElement).value = `Producto de interés: ${productName}`;
+  
+        // Submit Zoho form
+        if (checkMandatory6418949000000513177()) {
+          zohoForm.submit();
         }
-        (optionElem as HTMLSelectElement).querySelectorAll('option')[(optionElem as HTMLSelectElement).selectedIndex].ariaSelected='true';
-      }
-    function validateEmail6418949000000513177()
-    {
+      });
+    });
+  
+    function validateEmail6418949000000513177() {
       let form = document.forms['WebToLeads6418949000000513177'];
       let emailFld = form.querySelectorAll('[ftype=email]');
-      let i;
-      for (i = 0; i < emailFld.length; i++)
-      {
+      for (let i = 0; i < emailFld.length; i++) {
         let emailVal = emailFld[i].value;
-        if((emailVal.replace(/^\s+|\s+$/g, '')).length!=0 )
-        {
+        if((emailVal.replace(/^\s+|\s+$/g, '')).length!=0 ) {
           let atpos=emailVal.indexOf('@');
           let dotpos=emailVal.lastIndexOf('.');
-          if (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailVal.length)
-          {
+          if (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailVal.length) {
             alert('Please enter a valid email address. ');
             emailFld[i].focus();
             return false;
@@ -65,72 +109,34 @@
   
     function checkMandatory6418949000000513177() {
       let mndFileds = new Array('Last Name');
-      let fldLangVal = new Array('Last\x20Name');
+      let fldLangVal = new Array('Last Name');
       for(let i=0;i<mndFileds.length;i++) {
         let fieldObj=document.forms['WebToLeads6418949000000513177'][mndFileds[i]];
         if(fieldObj) {
-        if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length==0) {
-         if(fieldObj.type =='file')
-          { 
-           alert('Please select a file to upload.'); 
-           fieldObj.focus(); 
-           return false;
-          } 
-        alert(fldLangVal[i] +' cannot be empty.'); 
-                  fieldObj.focus();
-                  return false;
-        }  else if(fieldObj.nodeName=='SELECT') {
-                 if(fieldObj.options[fieldObj.selectedIndex].value=='-None-') {
-          alert(fldLangVal[i] +' cannot be none.'); 
-          fieldObj.focus();
-          return false;
-           }
-        } else if(fieldObj.type =='checkbox'){
+          if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length==0) {
+            alert(fldLangVal[i] +' cannot be empty.');
+            fieldObj.focus();
+            return false;
+          } else if(fieldObj.nodeName=='SELECT') {
+            if(fieldObj.options[fieldObj.selectedIndex].value=='-None-') {
+              alert(fldLangVal[i] +' cannot be none.');
+              fieldObj.focus();
+              return false;
+            }
+          } else if(fieldObj.type =='checkbox'){
             if(fieldObj.checked == false){
-          alert('Please accept  '+fldLangVal[i]);
-          fieldObj.focus();
-          return false;
-           } 
-         } 
-         try {
-             if(fieldObj.name == 'Last Name') {
-          name = fieldObj.value;
-               }
-        } catch (e) {}
+              alert('Please accept  '+fldLangVal[i]);
+              fieldObj.focus();
+              return false;
+            }
           }
+        }
       }
       if(!validateEmail6418949000000513177()){return false;}
-      
-    let urlparams = new URLSearchParams( window.location.search);
-    if(urlparams.has('service') && (urlparams.get('service')==='smarturl')){
-      let webform = document.getElementById('webform6418949000000513177');
-       let service =  urlparams.get('service'); 
-      let smarturlfield = document.createElement('input');
-      smarturlfield.setAttribute('type','hidden');
-      smarturlfield.setAttribute('value',service);
-      smarturlfield.setAttribute('name','service');
-      webform.appendChild(smarturlfield); 
+      return true;
     }
-  
-      document.querySelector('.crmWebToEntityForm .formsubmit').setAttribute('disabled', "true");
-    }
-  
-  function tooltipShow6418949000000513177(el){
-    let tooltip = el.nextElementSibling;
-    let tooltipDisplay = tooltip.style.display;
-    if(tooltipDisplay == 'none'){
-      let allTooltip = document.getElementsByClassName('zcwf_tooltip_over');
-      for(let i=0; i<allTooltip.length; i++){
-        (allTooltip[i] as HTMLElement).style.display='none';
-      }
-      tooltip.style.display = 'block';
-    }else{
-      tooltip.style.display='none';
-    }
-  }
   </script>
-    <script id='wf_anal' src='https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=ea30ec3c8428863800ba77e596ca56e91062f29f56ae1a94f677e763f17cb98dafe0b42bdb8331f83c368daa2277d268gid24046eaf8944115beeb38a98805000dcddec21a6ae735b51ca14ac14809a747dgid15c1be8667afd912355b176dce68f23b6473f97cc4fadeee69d70e3427b9d8a1gid41c2a64ed8ce529577da602637056c6616d5a44f3f0123a0780b4d1c364c264c&tw=cbb97ddf7f16f8e31f2228da778a23f76f056733a44b57e8e5e28d095ef16984'></script></form>
-  </div>
+  <script id='wf_anal' src='https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=ea30ec3c8428863800ba77e596ca56e91062f29f56ae1a94f677e763f17cb98dafe0b42bdb8331f83c368daa2277d268gid24046eaf8944115beeb38a98805000dcddec21a6ae735b51ca14ac14809a747dgid15c1be8667afd912355b176dce68f23b6473f97cc4fadeee69d70e3427b9d8a1gid41c2a64ed8ce529577da602637056c6616d5a44f3f0123a0780b4d1c364c264c&tw=cbb97ddf7f16f8e31f2228da778a23f76f056733a44b57e8e5e28d095ef16984'></script>
 
   <style>
     #crmWebToEntityForm{
