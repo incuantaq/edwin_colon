@@ -1,8 +1,8 @@
 ---
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import Whatsapp from '../components/Whatsapp.astro';
-import Footer from '../components/Footer.astro';
+import Header from '@components/Header.astro';
+import Hero from '@components/Hero.astro';
+import Whatsapp from '@components/Whatsapp.astro';
+import Footer from '@components/Footer.astro';
 
 interface Props {
 	title: string;
@@ -30,6 +30,7 @@ const { title, hasHero = true } = Astro.props;
     <Whatsapp />
 	</body>
 </html>
+
 <style is:global>
 	:root {
 		--accent: 136, 58, 234;
@@ -42,18 +43,44 @@ const { title, hasHero = true } = Astro.props;
 			white 60%
 		);
 	}
-	html {
-		font-family: system-ui, sans-serif;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+
+  @font-face {
+    font-family: 'Raleway';
+    src: url('/fonts/Raleway-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Lato';
+    src: url('/fonts/Lato-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Lato';
+    src: url('/fonts/Lato-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Lato';
+    src: url('/fonts/Lato-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  html {
+    font-family: 'Lato', system-ui, sans-serif;
+  }
+  
+  .container{
+    width: 90%;
+    max-width: 1152px;
+  }
+
 </style>
