@@ -20,6 +20,9 @@ dependencies:
   astro:
     specifier: ^4.15.2
     version: 4.15.2(typescript@5.5.4)
+  atropos:
+    specifier: ^2.0.2
+    version: 2.0.2
   react:
     specifier: ^18.3.1
     version: 18.3.1
@@ -1249,6 +1252,11 @@ packages:
       - supports-color
       - terser
       - typescript
+    dev: false
+
+  /atropos@2.0.2:
+    resolution: {integrity: sha512-8f0u0hEOlBTWTSvzY17TcHuQjxUIpkTBq70/I4+UF5B43ORtOoRjm8TPBYEgLM8Ba9AWf6PDtkagbYoybdjaKg==}
+    engines: {node: '>= 12.0.0'}
     dev: false
 
   /autoprefixer@10.4.20(postcss@8.4.44):

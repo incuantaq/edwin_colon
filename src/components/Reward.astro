@@ -1,0 +1,65 @@
+---
+  import 'atropos/css'
+---
+
+<!-- main Atropos container (required), add your custom class here -->
+
+<div class="max-w-screen-lg mx-auto pt-32 pb-16 px-4 md:px-8 lg:px-16">
+  <div class="atropos my-atropos">
+    <!-- scale container (required) -->
+    <div class="atropos-scale">
+      <!-- rotate container (required) -->
+      <div class="atropos-rotate">
+        <!-- inner container (required) -->
+        <div class="atropos-inner">
+          <!-- put your custom content here -->
+            <div data-atropos-offset="5" class="absolute z-10 w-full h-full flex flex-col items-center justify-center">
+            <!-- <div data-atropos-offset="5" id="show-reward" class="absolute z-10 flex flex-col items-center justify-center top-[10%] left-[30%] bg-white rounded-3xl p-10"> -->
+              <h2 class="text-center text-5xl font-bold text-primary">
+                Viaja con todo pago!
+              </h2>
+              <h3 class="text-center text-2xl font-bold text-gray-15">
+                Punta cana!
+              </h3>
+            </div>
+            <img src="/images/beach_bg.webp" alt="beach" class="rounded-xl overflow-hidden">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #show-reward.active {
+    animation: show-reward 1s ease-in-out;
+  }
+
+  @keyframes show-reward {
+    0% {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  import Atropos from 'atropos'
+
+  const rewardInfo = document.getElementById('show-reward');
+
+  const atropos = Atropos({
+    el: '.my-atropos',
+    onEnter() {
+      console.log('Enter');
+      rewardInfo.classList.add('active');
+    },
+    onLeave() {
+      console.log('Leave');
+      rewardInfo.classList.remove('active');
+    },
+  })
+</script>
