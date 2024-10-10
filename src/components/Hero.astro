@@ -1,36 +1,22 @@
 ---
-const slides = [
-  {
+const slide = {
     image: '/images/hero_home.webp',
     title: 'Si eres el cliente 25!',
     subtitle: 'Te vas con todo pago para Punta Cana'
-  },
-  // {
-  //   image: '/images/hero_home.webp',
-  //   title: 'Si eres el cliente 25!',
-  //   subtitle: 'Te vas con todo pago para Punta Cana'
-  // }
-]
+  }
 ---
 <section class="relative">
   <div class="relative overflow-hidden">
-    { slides.map((slide, idx) => (
-      <div id={`slide-${idx}`} class="overflow-hidden w-full h-[550px] slide">
-        <img src={slide.image} alt="Hero" class="w-full h-full">
-        <div class="container absolute h-full top-0 left-1/2 -translate-x-1/2">
-          <h2 class="flex flex-col h-full justify-center text-5xl text-balance w-[650px] max-w-full md:text-7xl">
-            <span class="text-primary">{slide.title}</span>
-            <span class="text-white">{slide.subtitle}</span>
-          </h2>
-        </div>
+    <div class="overflow-hidden w-full h-[550px] slide">
+      <img src={slide.image} alt="Hero" class="w-full h-full">
+      <div class="container absolute h-full top-0 left-1/2 -translate-x-1/2 pb-16">
+        <h2 class="flex flex-col h-full justify-center text-5xl text-balance w-[650px] max-w-full md:text-6xl">
+          <span class="text-primary font-raleway font-black">{slide.title}</span>
+          <span class="text-white font-raleway font-extrabold">{slide.subtitle}</span>
+        </h2>
       </div>
-    ))}
-    <img src="/images/irregular_form.png" alt="union" class="absolute top-[90%] md:top-[75%] left-0 w-full">
-  </div>
-  <div class="pagination absolute top-1/2 right-4 -translate-y-1/2">
-    {slides.map((_, index) => 
-      <button id={`slide-picker-${index}`} class="w-1.5 h-8 bg-white mx-1 slide-picker" aria-label={`Go to slide ${index + 1}`}></button>
-    )}
+    </div>
+    <img src="/images/irregular_form.png" alt="union" class="absolute top-[90%] md:top-[80%] left-0 w-full">
   </div>
 </section>
 

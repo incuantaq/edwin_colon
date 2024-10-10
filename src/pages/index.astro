@@ -1,13 +1,13 @@
 ---
+import Reward from '@components/Reward.astro';
 import About from '../components/about.astro';
 import Products from '../components/products.astro';
-import Testimonials from '../components/Testimonials.astro';
 import Layout from '../layouts/Layout.astro';
 
 ---
 
-<Layout title="Edwin Colon Windmar" hasHero={true}>
+<Layout title="Edwin Colon Windmar" description="Description here" hasHero={true}>
   <About />
   <Products />
-  <Testimonials />
+  <Reward />
 </Layout>
