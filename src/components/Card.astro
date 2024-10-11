@@ -9,10 +9,19 @@ const { img, title, body } = Astro.props;
 ---
 
 <div class="bg-white overflow-hidden rounded-2xl max-w-[350px] flex flex-col text-left">
-  <img src={img} alt={title}>
+  <img class="card-img" src={img} alt={title}>
   <div class="py-4 px-8 grow">
     <h4 class="font-bold font-raleway text-2xl text-balance leading-7 mb-3">{title}</h4>
     <p class="text-gray-55">{body}</p>
   </div>
 </div>
+
+<style>
+  .card-img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+  }
+</style>
  
