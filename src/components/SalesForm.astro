@@ -90,7 +90,7 @@ import Cotizacion from "./Cotizacion";
     });
   
     function validateEmail6418949000000513177() {
-      let form = document.forms['WebToLeads6418949000000513177'];
+      let form = document.forms['WebToLeads6452183000000501004'];
       let emailFld = form.querySelectorAll('[ftype=email]');
       for (let i = 0; i < emailFld.length; i++) {
         let emailVal = emailFld[i].value;
@@ -111,7 +111,7 @@ import Cotizacion from "./Cotizacion";
       let mndFileds = new Array('Last Name');
       let fldLangVal = new Array('Last Name');
       for(let i=0;i<mndFileds.length;i++) {
-        let fieldObj=document.forms['WebToLeads6418949000000513177'][mndFileds[i]];
+        let fieldObj=document.forms['WebToLeads6452183000000501004'][mndFileds[i]];
         if(fieldObj) {
           if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length==0) {
             alert(fldLangVal[i] +' cannot be empty.');
