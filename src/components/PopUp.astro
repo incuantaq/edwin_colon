@@ -1,0 +1,39 @@
+
+---
+---
+<div id="popup" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+  <div class="bg-white p-1 rounded-lg shadow-lg w-[500px] max-w-[90%] relative">
+    <button id="closePopup" class="absolute top-2 right-2 text-gray-800 hover:text-gray-950">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <img src="/images/punta_cana_beach.jpg" alt="Punta Cana" class="w-full mb-4">
+    <div class="p-8">
+      <h2 class="text-2xl font-bold mb-4 text-center">¡Gran oportunidad!</h2>
+      <p class="mb-4 text-center">¡Compra ahora y podrías ganar un viaje a Punta Cana!</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const popup = document.getElementById('popup');
+  const closePopup = document.getElementById('closePopup');
+
+  function showPopup() {
+    const lastVisit = sessionStorage.getItem('lastVisit');
+    const currentTime = new Date().getTime();
+
+    if (!lastVisit) {
+      popup.classList.remove('hidden');
+      sessionStorage.setItem('lastVisit', currentTime.toString());
+    }
+  }
+
+  closePopup.addEventListener('click', () => {
+    popup.classList.add('hidden');
+  });
+
+  // Mostrar el popup después de un pequeño retraso para asegurar que el DOM esté cargado
+  setTimeout(showPopup, 500);
+</script>
