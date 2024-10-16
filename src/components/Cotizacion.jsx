@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
+import { NeonGradientCard } from '@/components/ui/neon-gradient-card';
 
 const products = [
   { id: 'Placas Solares', title: 'Placas Solares' },
@@ -21,12 +22,32 @@ const appliances = [
   {name: 'Portátil', power: 60},
 ]
 
+const roofingCat = [
+  {
+    name: 'Silver',
+    firstColor: '#C0C0C0',
+    secondColor: '#808080'
+  },
+  {
+    name: 'Gold',
+    firstColor: '#FFD700',
+    secondColor: '#DAA520'
+  },
+  {
+    name: 'Platinum',
+    firstColor: '#559190',
+    secondColor: '#6abac3'
+  },
+]
+
 const ankerMediumConstrain = 2400;
 
 const Cotizacion = () => {
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [data, setData] = useState({});
   const [applianceList, setApplianceList] = useState([]);
+  const [isThinking, setIsThinking] = useState(false);
+  const [showRoofBundles, setShowRoofBundles] = useState(false);
 
 
   const calcPlatesNumber = (average_payment) => {
@@ -66,6 +87,27 @@ const Cotizacion = () => {
     });
     return totalPower
   }
+
+  const debouncedShowOptions = useCallback((value) => {
+    if (value) {
+      setIsThinking(true);
+      setShowRoofBundles(false);
+      const timer = setTimeout(() => {
+        setIsThinking(false);
+        setShowRoofBundles(true);
+      }, 2000);
+      return () => clearTimeout(timer);
+    } else {
+      setShowRoofBundles(false);
+      setIsThinking(false);
+    }
+  }, []);
+
+  const handleRoofAreaInput = (e) => {
+    const value = e.target.value;
+    handleFormData(e);
+    debouncedShowOptions(value);
+  };
 
   return (
     <div className="w-full md:w-1/2">
@@ -133,7 +175,29 @@ const Cotizacion = () => {
         {selectedProduct === 'Roofing' && (
           <div className='pt-4' id="roofing">
             <p className='pb-2'>¿Cuál es el área de tu techo? (Pies cuadrados)</p>
-            <input type="tel" id="roof-area" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Area de tu techo" onChange={handleFormData}/>
+            <input type="tel" id="roof-area" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Area de tu techo" onChange={handleRoofAreaInput}/>
+
+            {isThinking && (
+              <p className="text-center mt-8 text-xl">Analizando opciones...</p>
+            )}
+
+            { showRoofBundles && <>
+              <h3 className='text-center mt-8 text-2xl font-bold'>Eres apto para los siguientes paquetes:</h3>
+              <div className='flex justify-center gap-4 mt-12 flex-wrap'>
+                {roofingCat.map((cat) => (
+                  <NeonGradientCard key={cat.name} className="items-center justify-center text-center w-full sm:min-w-1/3 sm:w-fit" neonColors={{firstColor: cat.firstColor, secondColor: cat.secondColor}}>
+                    <span 
+                      className="pointer-events-none z-10 h-full whitespace-pre-wrap bg-clip-text text-center text-4xl font-bold leading-none tracking-tighter text-transparent dark:drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]"
+                      style={{
+                        backgroundImage: `linear-gradient(to bottom right, ${cat.firstColor} 35%, ${cat.secondColor})`,
+                      }}
+                    >
+                      {cat.name}
+                    </span>
+                  </NeonGradientCard>
+                ))}
+              </div>
+            </> }
           </div>
         )}
       </div>
