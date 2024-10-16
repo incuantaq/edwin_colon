@@ -3,9 +3,13 @@ import CareersForm from '../components/CareersForm.astro';
 import Path from '../components/Path.astro';
 import Layout from '../layouts/Layout.astro';
 
+const title = "Edwin Colon | Empleos";
+const description = "Únete a nuestro equipo de energía solar y techos. Oportunidades de carrera en instalación, ventas y servicio al cliente. Crecimiento profesional y trabajo significativo en energía limpia.";
+const metaImg = '/logo.svg'
+
 ---
 
-<Layout title="Empleos Edwin Colon" hasHero={true}>
+<Layout title={title} description={description} hasHero={true} image={metaImg}>
   <Path />
 	<CareersForm />
 </Layout>
