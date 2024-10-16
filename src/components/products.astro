@@ -6,16 +6,28 @@ const products = [
     name: 'Libera el Poder del Sol en Tu Hogar',
     description: 'Transforma tu casa con energía solar 24/7. Nuestro Sistema Solar Fotovoltaico no solo mejora tu calidad de vida, sino que también cuida tu bolsillo. Únete a la revolución solar y brilla con energía inteligente.',
     image: '/images/placas.webp',
+    link: {
+      label: 'Ver mas',
+      url: '/cotizar'
+    }
   },
   {
     name: 'Energía Portátil para Cada Aventura',
     description: 'Lleva el poder del sol contigo con las baterías Anker. Cárgalas en cualquier lugar con paneles solares portátiles y gestiona tu energía de forma inteligente con el interruptor de transferencia. Tu fuente de energía confiable, siempre a mano.',
     image: '/images/anker.webp',
+    link: {
+      label: 'Ver mas',
+      url: '/cotizar'
+    }
   },
   {
     name: 'Protege Tu Hogar desde Arriba',
     description: 'Con 20 años de experiencia en techos puertorriqueños, nuestro servicio de roofing ofrece un sellado de calidad superior. Olvídate de goteras, grietas y hongos - asegura tu tranquilidad con WindMar Roofing.',
     image: '/images/roofing.webp',
+    link: {
+      label: 'Ver mas',
+      url: '/cotizar'
+    }
   }
 ]
 ---
@@ -24,7 +36,7 @@ const products = [
   <div class="container mx-auto">
     <h3 class="text-white text-center text-3xl md:text-6xl text-balance font-black font-raleway">Energía Inteligente para Tu Hogar</h3>
     <div class="flex justify-center gap-10 mt-10 md:mt-20 flex-col md:flex-row">
-      {products.map(({name, description, image}) => <Card title={name}body={description} img={image}/>)}
+      {products.map(({name, description, image, link}) => <Card title={name}body={description} img={image} action={link}/>)}
     </div>
     <a href="/cotizar" class="text-white border border-primary bg-primary font-extrabold font-raleway rounded-lg text-xl px-5 py-2.5 text-center mt-6 inline-block">Cotiza Ahora</a>
   </div>
