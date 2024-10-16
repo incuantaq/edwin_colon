@@ -11,9 +11,10 @@ interface Props {
 	title: string;
   description: string;
   hasHero: boolean;
+  image: string;
 }
 
-const { title, hasHero = true, description } = Astro.props;
+const { title, hasHero = true, description, image } = Astro.props;
 ---
 
 <!doctype html>
@@ -24,6 +25,14 @@ const { title, hasHero = true, description } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- SEO  -->
+    <meta name="description" content={description} />
+    <meta property="author" content="Sebastian Ramirez" />
+    
+    <!-- OG Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
 		<title>{title}</title>
     <ViewTransitions />
 	</head>

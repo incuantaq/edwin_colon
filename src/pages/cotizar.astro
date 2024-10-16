@@ -2,8 +2,13 @@
 import SalesForm from '../components/SalesForm.astro';
 import Layout from '../layouts/Layout.astro';
 
+const title = "Edwin Colon | Empleos";
+const description = "Cotiza tus paneles solares, baterías de hogar y servicios de Roofing. Herramienta fácil de usar para presupuestos personalizados. Descubre cuánto puedes ahorrar con energía solar.";
+const metaImg = '/logo.svg'
+
 ---
-<Layout title="Cotizar" hasHero={false} description='Cotiza tus productos para la energía solar de tu hogar.'>
+
+<Layout title={title} description={description} hasHero={false} image={metaImg}>
   <SalesForm />
 </Layout>
 
