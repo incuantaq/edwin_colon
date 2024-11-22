@@ -12,7 +12,7 @@ interface Props {
 const { img, title, body, action } = Astro.props;
 ---
 
-<div class="bg-white overflow-hidden rounded-2xl max-w-[350px] flex flex-col text-left">
+<div class="bg-white overflow-hidden rounded-2xl max-w-[350px] flex flex-col text-center">
   <img class="card-img" src={img} alt={title}>
   <div class="py-4 px-8 grow">
     <h4 class="font-bold font-raleway text-2xl text-balance leading-7 mb-3">{title}</h4>
