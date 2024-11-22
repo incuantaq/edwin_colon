@@ -35,7 +35,7 @@ const products = [
 <section class="bg-slate-700 py-16 text-center">
   <div class="container mx-auto">
     <h3 class="text-white text-center text-3xl md:text-6xl text-balance font-black font-raleway">Energía Inteligente para Tu Hogar</h3>
-    <div class="flex justify-center gap-10 mt-10 md:mt-20 flex-col md:flex-row">
+    <div class="flex justify-center gap-10 mt-10 md:mt-20 flex-col items-center md:flex-row md:items-start">
       {products.map(({name, description, image, link}) => <Card title={name}body={description} img={image} action={link}/>)}
     </div>
     <a href="/cotizar" class="text-white border border-primary bg-primary font-extrabold font-raleway rounded-lg text-xl px-5 py-2.5 text-center mt-6 inline-block">Cotiza Ahora</a>
