@@ -1,13 +1,13 @@
 ---
 import Cotizacion from "./Cotizacion";
-
 ---
+
 <form id="cotizador" class="flex flex-col flex-wrap md:flex-row container mx-auto py-10 pricer-wrapper">
   <div class="w-full md:w-1/2 md:pr-5 md:min-h-[65vh]">
     <h3 class="pb-4 font-bold text-xl">Información de contacto</h3>
-
+    
     <p class="text-md mb-4">Recuerda puedes ser el felíz ganador de un viaje con todo incluido a Punta Cana.</p>
-
+    
     <div>
       <input type="text" id="full_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Nombre completo" required />
       <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Email" required />
@@ -21,128 +21,162 @@ import Cotizacion from "./Cotizacion";
   <Cotizacion client:load />
 </form>
 
-  
-<div id='crmWebToEntityForm' class='zcwf_lblLeft crmWebToEntityForm' style='background-color: white;color: black;max-width: 600px;'>
-  
-  <form id='webform6452183000000501004' action='https://crm.zoho.com/crm/WebToLeadForm' name=WebToLeads6452183000000501004 method='POST' onSubmit='javascript:document.charset="UTF-8"; return checkMandatory6452183000000501004()' accept-charset='UTF-8'>
-   <input type='text' style='display:none;' name='xnQsjsdp' value='315b6fef7e2b591e2ab85e8105388069872b85f4e9b3cce2dfe4034fcd765429'></input> 
-   <input type='hidden' name='zc_gad' id='zc_gad' value=''></input>
-   <input type='text' style='display:none;' name='xmIwtLD' value='b996b56ff34ed038f05f2cd8769a4a84592c6736396f7d034b0c8def6d9293b89c002f71b85c559205c37fb59aca6d31'></input> 
-   <input type='text'  style='display:none;' name='actionType' value='TGVhZHM='></input>
-   <input type='text' style='display:none;' name='returnURL' value='https&#x3a;&#x2f;&#x2f;pr-solarenergy.com&#x2f;thank-you' > </input>
+<!-- Zoho CRM Form - Hidden -->
+<div id='crmWebToEntityForm' class='zcwf_lblLeft crmWebToEntityForm' style='background-color: white;color: black;max-width: 600px;display:none'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+   
+  <form id='webform6541791000000514010' action='https://crm.zoho.com/crm/WebToLeadForm' name=WebToLeads6541791000000514010 method='POST' accept-charset='UTF-8'>
+    <input type='text' style='display:none;' name='xnQsjsdp' value='1af81063d22be2c0d080fee273521ee1ab7bea608e69d5870f5385260990d368'></input> 
+    <input type='hidden' name='zc_gad' id='zc_gad' value=''></input>
+    <input type='text' style='display:none;' name='xmIwtLD' value='0559e73e8707136545e4b302620b882d5e868d3e879104a97bb39c38b855f4571c3376e4f0ff62a7b83452a545537d01'></input> 
+    <input type='text' style='display:none;' name='actionType' value='TGVhZHM='></input>
+    <input type='text' style='display:none;' name='returnURL' value='https&#x3a;&#x2f;&#x2f;pr-solarenergy.com&#x2f;thank-you'></input>
 
-  <div class='zcwf_title' style='max-width: 600px;color: black; font-family:Arial;'>Sales</div><div class='zcwf_row'><div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'><label for='First_Name'>First Name</label></div><div class='zcwf_col_fld'><input type='text' id='First_Name' aria-required='false' aria-label='First Name' name='First Name' aria-valuemax='40' maxlength='40'></input><div class='zcwf_col_help'></div></div></div><div class='zcwf_row'><div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'><label for='Last_Name'>Last Name<span style='color:red;'>*</span></label></div><div class='zcwf_col_fld'><input type='text' id='Last_Name' aria-required='true' aria-label='Last Name' name='Last Name' aria-valuemax='80' maxlength='80'></input><div class='zcwf_col_help'></div></div></div><div class='zcwf_row'><div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'><label for='Email'>Email</label></div><div class='zcwf_col_fld'><input type='text' ftype='email' autocomplete='false' id='Email' aria-required='false' aria-label='Email' name='Email' aria-valuemax='100' crmlabel='' maxlength='100'></input><div class='zcwf_col_help'></div></div></div><div class='zcwf_row'><div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'><label for='Phone'>Phone</label></div><div class='zcwf_col_fld'><input type='text' id='Phone' aria-required='false' aria-label='Phone' name='Phone' aria-valuemax='30' maxlength='30'></input><div class='zcwf_col_help'></div></div></div><div class='zcwf_row'><div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'><label for='Street'>Street</label></div><div class='zcwf_col_fld'><input type='text' id='Street' aria-required='false' aria-label='Street' name='Street' aria-valuemax='250' maxlength='250'></input><div class='zcwf_col_help'></div></div></div><div class='zcwf_row wfrm_fld_dpNn'><div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'><label for='Lead_Source'>Lead Source</label></div><div class='zcwf_col_fld'><select class='zcwf_col_fld_slt' role='combobox' aria-expanded='false' aria-haspopup='listbox' id='Lead_Source' onChange='addAriaSelected6452183000000501004()' aria-required='false' aria-label='Lead Source' name='Lead Source'  >
-        <option value='-None-'>-None-</option>
-        <option value='Advertisement'>Advertisement</option>
-        <option value='Cold&#x20;Call'>Cold Call</option>
-        <option value='Employee&#x20;Referral'>Employee Referral</option>
-        <option value='External&#x20;Referral'>External Referral</option>
-      <option selected value='Online&#x20;Store'>Online Store</option>
-        <option value='X&#x20;&#x28;Twitter&#x29;'>X &#x28;Twitter&#x29;</option>
-        <option value='Facebook'>Facebook</option>
-        <option value='Partner'>Partner</option>
-        <option value='Public&#x20;Relations'>Public Relations</option>
-        <option value='Sales&#x20;Email&#x20;Alias'>Sales Email Alias</option>
-        <option value='Seminar&#x20;Partner'>Seminar Partner</option>
-        <option value='Internal&#x20;Seminar'>Internal Seminar</option>
-        <option value='Trade&#x20;Show'>Trade Show</option>
-        <option value='Web&#x20;Download'>Web Download</option>
-        <option value='Web&#x20;Research'>Web Research</option>
-        <option value='Chat'>Chat</option>
-      </select><div class='zcwf_col_help'></div></div></div><div class='zcwf_row'><div class='zcwf_col_lab' style='font-size:12px; font-family: Arial;'><label for='Description'>Description</label></div><div class='zcwf_col_fld'><textarea aria-multiline='true' id='Description' aria-required='false' aria-label='Description' name='Description'></textarea><div class='zcwf_col_help'></div></div></div><div class='zcwf_row'><div class='zcwf_col_lab'></div><div class='zcwf_col_fld'><input type='submit' id='formsubmit' role='button' class='formsubmit zcwf_button' value='Submit' aria-label='Submit' title='Submit'><input type='reset' class='zcwf_button' role='button' name='reset' value='Reset' aria-label='Reset' title='Reset'></div></div>
-    </form>
-  </div>
+    <div class='zcwf_row'><div class='zcwf_col_lab'><label for='First_Name'>Nombre</label></div>
+      <div class='zcwf_col_fld'><input type='text' id='First_Name' name='First Name' maxlength='40'></input></div>
+    </div>
+    
+    <div class='zcwf_row'><div class='zcwf_col_lab'><label for='Last_Name'>Apellidos<span style='color:red;'>*</span></label></div>
+      <div class='zcwf_col_fld'><input type='text' id='Last_Name' name='Last Name' maxlength='80'></input></div>
+    </div>
+    
+    <div class='zcwf_row'><div class='zcwf_col_lab'><label for='Email'>Email</label></div>
+      <div class='zcwf_col_fld'><input type='text' ftype='email' id='Email' name='Email' maxlength='100'></input></div>
+    </div>
+    
+    <div class='zcwf_row'><div class='zcwf_col_lab'><label for='Phone'>Teléfono</label></div>
+      <div class='zcwf_col_fld'><input type='text' id='Phone' name='Phone' maxlength='30'></input></div>
+    </div>
+    
+    <div class='zcwf_row'><div class='zcwf_col_lab'><label for='Street'>Calle</label></div>
+      <div class='zcwf_col_fld'><input type='text' id='Street' name='Street' maxlength='250'></input></div>
+    </div>
+    
+    <div class='zcwf_row'><div class='zcwf_col_lab'><label for='Description'>Descripción</label></div>
+      <div class='zcwf_col_fld'><textarea id='Description' name='Description'></textarea></div>
+    </div>
+    
+    <div class='zcwf_row'><div class='zcwf_col_lab'><label for='Lead_Source'>Lead Source</label></div>
+      <div class='zcwf_col_fld'>
+        <select class='zcwf_col_fld_slt' id='Lead_Source' name='Lead Source'>
+          <option selected value='Online Store'>Online Store</option>
+        </select>
+      </div>
+    </div>
+  </form>
+</div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const customForm = document.getElementById('cotizador');
-      const zohoForm = document.getElementById('webform6452183000000501004') as HTMLFormElement;
-  
-      customForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-  
-        const fullName = (document.getElementById('full_name') as HTMLInputElement).value;
-        const email = (document.getElementById('email') as HTMLInputElement).value;
-        const phone = (document.getElementById('phone') as HTMLInputElement).value;
-        const address = (document.getElementById('address') as HTMLInputElement).value;
-  
-        // Split full name into first and last name
-        const nameParts = fullName.split(' ');
-        const firstName = nameParts[0];
-        const lastName = nameParts.slice(1).join(' ') || firstName;
-  
-        // Fill Zoho form
-        (zohoForm.querySelector('#First_Name') as HTMLInputElement).value = firstName;
-        (zohoForm.querySelector('#Last_Name') as HTMLInputElement).value = lastName;
-        (zohoForm.querySelector('#Email') as HTMLInputElement).value = email;
-        (zohoForm.querySelector('#Phone') as HTMLInputElement).value = phone;
-        (zohoForm.querySelector('#Street') as HTMLInputElement).value = address;
-  
-        // Get selected product
-        const selectedProduct = document.querySelector('.product-picker.selected') as HTMLElement;
-        const productName = selectedProduct ? selectedProduct.textContent : 'No product selected';
-  
-        // Set description
-        (zohoForm.querySelector('#Description') as HTMLTextAreaElement).value = `Producto de interés: ${productName}`;
-  
-        // Submit Zoho form
-        if (checkMandatory6418949000000513177()) {
-          zohoForm.submit();
-        }
-      });
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const cotizadorForm = document.getElementById('cotizador');
+    const zohoForm = document.getElementById('webform6541791000000514010') as HTMLFormElement;
+
+    function validateEmail(email: string) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    function validateForm(formData: {
+      fullName: string,
+      email: string,
+      phone: string,
+      address: string
+    }) {
+      if (!formData.fullName || formData.fullName.trim().length === 0) {
+        alert('El nombre no puede estar vacío');
+        return false;
+      }
+      
+      if (!formData.email || !validateEmail(formData.email)) {
+        alert('Introduzca una dirección de correo electrónico válida');
+        return false;
+      }
+      
+      if (!formData.phone || formData.phone.trim().length < 10) {
+        alert('Por favor ingrese un número de teléfono válido');
+        return false;
+      }
+      
+      if (!formData.address || formData.address.trim().length === 0) {
+        alert('La dirección no puede estar vacía');
+        return false;
+      }
+      
+      return true;
+    }
+
+    cotizadorForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const formData = {
+        fullName: (document.getElementById('full_name') as HTMLInputElement).value,
+        email: (document.getElementById('email') as HTMLInputElement).value,
+        phone: (document.getElementById('phone') as HTMLInputElement).value,
+        address: (document.getElementById('address') as HTMLInputElement).value
+      };
+
+      if (!validateForm(formData)) {
+        return;
+      }
+
+      // Split full name into first and last name
+      const nameParts = formData.fullName.split(' ');
+      const firstName = nameParts[0];
+      const lastName = nameParts.slice(1).join(' ') || firstName;
+
+      // Fill Zoho form
+      (zohoForm.querySelector('#First_Name') as HTMLInputElement).value = firstName;
+      (zohoForm.querySelector('#Last_Name') as HTMLInputElement).value = lastName;
+      (zohoForm.querySelector('#Email') as HTMLInputElement).value = formData.email;
+      (zohoForm.querySelector('#Phone') as HTMLInputElement).value = formData.phone;
+      (zohoForm.querySelector('#Street') as HTMLInputElement).value = formData.address;
+
+      // Get selected product
+      const selectedProduct = document.querySelector('.product-picker.selected') as HTMLElement;
+      const productName = selectedProduct ? selectedProduct.textContent : 'No product selected';
+
+      // Set description
+      (zohoForm.querySelector('#Description') as HTMLTextAreaElement).value = `Producto de interés: ${productName}`;
+
+      // Submit form using Zoho's validation function
+      if (validateEmail6541791000000514010() && checkMandatory6541791000000514010()) {
+        zohoForm.submit();
+      }
     });
-  
-    function validateEmail6418949000000513177() {
-      let form = document.forms['WebToLeads6452183000000501004'];
-      let emailFld = form.querySelectorAll('[ftype=email]');
-      for (let i = 0; i < emailFld.length; i++) {
-        let emailVal = emailFld[i].value;
-        if((emailVal.replace(/^\s+|\s+$/g, '')).length!=0 ) {
-          let atpos=emailVal.indexOf('@');
-          let dotpos=emailVal.lastIndexOf('.');
-          if (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailVal.length) {
-            alert('Please enter a valid email address. ');
-            emailFld[i].focus();
-            return false;
-          }
-        }
-      }
-      return true;
-    }
-  
-    function checkMandatory6418949000000513177() {
-      let mndFileds = new Array('Last Name');
-      let fldLangVal = new Array('Last Name');
-      for(let i=0;i<mndFileds.length;i++) {
-        let fieldObj=document.forms['WebToLeads6452183000000501004'][mndFileds[i]];
-        if(fieldObj) {
-          if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length==0) {
-            alert(fldLangVal[i] +' cannot be empty.');
-            fieldObj.focus();
-            return false;
-          } else if(fieldObj.nodeName=='SELECT') {
-            if(fieldObj.options[fieldObj.selectedIndex].value=='-None-') {
-              alert(fldLangVal[i] +' cannot be none.');
-              fieldObj.focus();
-              return false;
-            }
-          } else if(fieldObj.type =='checkbox'){
-            if(fieldObj.checked == false){
-              alert('Please accept  '+fldLangVal[i]);
-              fieldObj.focus();
-              return false;
-            }
-          }
-        }
-      }
-      if(!validateEmail6418949000000513177()){return false;}
-      return true;
-    }
-  </script>
-  <script id='wf_anal' src='https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=ea30ec3c8428863800ba77e596ca56e91062f29f56ae1a94f677e763f17cb98dafe0b42bdb8331f83c368daa2277d268gid24046eaf8944115beeb38a98805000dcddec21a6ae735b51ca14ac14809a747dgid15c1be8667afd912355b176dce68f23b6473f97cc4fadeee69d70e3427b9d8a1gid41c2a64ed8ce529577da602637056c6616d5a44f3f0123a0780b4d1c364c264c&tw=cbb97ddf7f16f8e31f2228da778a23f76f056733a44b57e8e5e28d095ef16984'></script>
+  });
 
-  <style>
-    #crmWebToEntityForm{
-      position: relative;
+  // Zoho's required validation functions
+  function validateEmail6541791000000514010() {
+    var form = document.forms['WebToLeads6541791000000514010'];
+    var emailFld = form.querySelectorAll('[ftype=email]');
+    for (var i = 0; i < emailFld.length; i++) {
+      var emailVal = emailFld[i].value;
+      if((emailVal.replace(/^\s+|\s+$/g, '')).length!=0) {
+        var atpos=emailVal.indexOf('@');
+        var dotpos=emailVal.lastIndexOf('.');
+        if (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailVal.length) {
+          alert('Introduzca una dirección de correo electrónico válida');
+          emailFld[i].focus();
+          return false;
+        }
+      }
     }
-  </style>
+    return true;
+  }
+
+  function checkMandatory6541791000000514010() {
+    var mndFileds = new Array('Last Name');
+    var fldLangVal = new Array('Apellidos');
+    for(var i=0;i<mndFileds.length;i++) {
+      var fieldObj=document.forms['WebToLeads6541791000000514010'][mndFileds[i]];
+      if(fieldObj) {
+        if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length==0) {
+          alert(fldLangVal[i] +' no puede estar vacío.');
+          fieldObj.focus();
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+</script>
