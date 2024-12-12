@@ -23,16 +23,16 @@ import Cotizacion from "./Cotizacion";
 
 <!-- Zoho CRM Form - Hidden -->
 <div id='crmWebToEntityForm' class='zcwf_lblLeft crmWebToEntityForm' style='display: none;'>
-  <form id='webform6452183000000501004' action='https://crm.zoho.com/crm/WebToLeadForm' name=WebToLeads6452183000000501004 method='POST' accept-charset='UTF-8'>
-    <input type='text' style='display:none;' name='xnQsjsdp' value='315b6fef7e2b591e2ab85e8105388069872b85f4e9b3cce2dfe4034fcd765429'></input> 
+  <form id='webform6541791000000514010' action='https://crm.zoho.com/crm/WebToLeadForm' name=WebToLeads6541791000000514010 method='POST' accept-charset='UTF-8'>
+    <input type='text' style='display:none;' name='xnQsjsdp' value='1af81063d22be2c0d080fee273521ee1ab7bea608e69d5870f5385260990d368'></input> 
     <input type='hidden' name='zc_gad' id='zc_gad' value=''></input>
-    <input type='text' style='display:none;' name='xmIwtLD' value='b996b56ff34ed038f05f2cd8769a4a84592c6736396f7d034b0c8def6d9293b89c002f71b85c559205c37fb59aca6d31'></input> 
+    <input type='text' style='display:none;' name='xmIwtLD' value='0559e73e8707136545e4b302620b882d5e868d3e879104a97bb39c38b855f4571c3376e4f0ff62a7b83452a545537d01'></input> 
     <input type='text' style='display:none;' name='actionType' value='TGVhZHM='></input>
     <input type='text' style='display:none;' name='returnURL' value='https&#x3a;&#x2f;&#x2f;pr-solarenergy.com&#x2f;thank-you'></input>
     
     <input type='text' id='First_Name' name='First Name' maxlength='40'></input>
     <input type='text' id='Last_Name' name='Last Name' maxlength='80'></input>
-    <input type='text' id='Email' name='Email' maxlength='100'></input>
+    <input type='text' ftype='email' id='Email' name='Email' maxlength='100'></input>
     <input type='text' id='Phone' name='Phone' maxlength='30'></input>
     <input type='text' id='Street' name='Street' maxlength='250'></input>
     <select id='Lead_Source' name='Lead Source'>
@@ -45,7 +45,7 @@ import Cotizacion from "./Cotizacion";
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const cotizadorForm = document.getElementById('cotizador');
-    const zohoForm = document.getElementById('webform6452183000000501004') as HTMLFormElement;
+    const zohoForm = document.getElementById('webform6541791000000514010') as HTMLFormElement;
 
     function validateEmail(email: string) {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -59,12 +59,12 @@ import Cotizacion from "./Cotizacion";
       address: string
     }) {
       if (!formData.fullName || formData.fullName.trim().length === 0) {
-        alert('Por favor ingrese su nombre completo');
+        alert('El nombre no puede estar vacío');
         return false;
       }
       
       if (!formData.email || !validateEmail(formData.email)) {
-        alert('Por favor ingrese un email válido');
+        alert('Introduzca una dirección de correo electrónico válida');
         return false;
       }
       
@@ -74,7 +74,7 @@ import Cotizacion from "./Cotizacion";
       }
       
       if (!formData.address || formData.address.trim().length === 0) {
-        alert('Por favor ingrese su dirección');
+        alert('La dirección no puede estar vacía');
         return false;
       }
       
@@ -114,8 +114,45 @@ import Cotizacion from "./Cotizacion";
       // Set description
       (zohoForm.querySelector('#Description') as HTMLTextAreaElement).value = `Producto de interés: ${productName}`;
 
-      // Submit Zoho form
-      zohoForm.submit();
+      // Submit form using Zoho's validation function
+      if (validateEmail6541791000000514010() && checkMandatory6541791000000514010()) {
+        zohoForm.submit();
+      }
     });
   });
+
+  // Zoho's required validation functions
+  function validateEmail6541791000000514010() {
+    var form = document.forms['WebToLeads6541791000000514010'];
+    var emailFld = form.querySelectorAll('[ftype=email]');
+    for (var i = 0; i < emailFld.length; i++) {
+      var emailVal = emailFld[i].value;
+      if((emailVal.replace(/^\s+|\s+$/g, '')).length!=0) {
+        var atpos=emailVal.indexOf('@');
+        var dotpos=emailVal.lastIndexOf('.');
+        if (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailVal.length) {
+          alert('Introduzca una dirección de correo electrónico válida');
+          emailFld[i].focus();
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  function checkMandatory6541791000000514010() {
+    var mndFileds = new Array('Last Name');
+    var fldLangVal = new Array('Apellidos');
+    for(var i=0;i<mndFileds.length;i++) {
+      var fieldObj=document.forms['WebToLeads6541791000000514010'][mndFileds[i]];
+      if(fieldObj) {
+        if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length==0) {
+          alert(fldLangVal[i] +' no puede estar vacío.');
+          fieldObj.focus();
+          return false;
+        }
+      }
+    }
+    return true;
+  }
 </script>
