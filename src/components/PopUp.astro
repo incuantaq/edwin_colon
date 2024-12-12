@@ -1,6 +1,3 @@
-
----
----
 <div id="popup" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
   <div class="bg-white p-1 rounded-lg shadow-lg w-[500px] max-w-[90%] relative">
     <button id="closePopup" class="absolute top-2 right-2 text-gray-800 hover:text-gray-950">
@@ -8,32 +5,142 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </button>
-    <img src="/images/punta_cana_beach.jpg" alt="Punta Cana" class="w-full mb-4">
     <div class="p-8">
       <h2 class="text-2xl font-bold mb-4 text-center">¡Gran oportunidad!</h2>
-      <p class="mb-4 text-center">¡Compra ahora podrías ganar un viaje todo incluido a Punta Cana!</p>
+      <p class="mb-4 text-center">¡Compra ahora y podrías ganar un viaje todo incluido a Punta Cana!</p>
     </div>
+    <form id="popupForm" class="p-4">
+      <div class="mb-4">
+        <input type="text" id="popup_full_name" placeholder="Nombre completo" class="w-full p-2 border rounded" required>
+      </div>
+      <div class="mb-4">
+        <input type="email" id="popup_email" placeholder="Email" class="w-full p-2 border rounded" required>
+      </div>
+      <div class="mb-4">
+        <input type="tel" id="popup_phone" placeholder="Teléfono" class="w-full p-2 border rounded" required>
+      </div>
+      <div class="mb-4">
+        <select id="popup_product" class="w-full p-2 border rounded" required>
+          <option value="">Selecciona un producto</option>
+          <option value="solar">Paneles Solares</option>
+          <option value="baterias">Baterías</option>
+          <option value="roofing">Roofing</option>
+        </select>
+      </div>
+      <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+        Enviar
+      </button>
+    </form>
   </div>
 </div>
 
+<!-- Zoho CRM Form - Hidden -->
+<div id='crmWebToEntityForm' class='zcwf_lblLeft crmWebToEntityForm' style='background-color: white;color: black;max-width: 600px; display: none;'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+   
+<form id='webform6541791000000514010' action='https://crm.zoho.com/crm/WebToLeadForm' name=WebToLeads6541791000000514010 method='POST' accept-charset='UTF-8'>
+ <input type='text' style='display:none;' name='xnQsjsdp' value='6f1894a6a513dc0b1df149523aab88edb49fe6a0d8556a0d8e7bb4cde1ba309d'></input> 
+ <input type='hidden' name='zc_gad' id='zc_gad' value=''></input>
+ <input type='text' style='display:none;' name='xmIwtLD' value='5df871c46e19092a5b94b4a11c8d237d154ac8d243d1552f0e34893edb4a772d7238f766288de2a6fad34a8f7e0b4a91'></input> 
+ <input type='text'  style='display:none;' name='actionType' value='TGVhZHM='></input>
+ <input type='text' style='display:none;' name='returnURL' value='https&#x3a;&#x2f;&#x2f;pr-solarenergy.com&#x2f;thank-you'></input>
+
+<div class='zcwf_row'><div class='zcwf_col_lab'><label for='First_Name'>Nombre</label></div><div class='zcwf_col_fld'><input type='text' id='First_Name' name='First Name' maxlength='40'></input></div></div>
+<div class='zcwf_row'><div class='zcwf_col_lab'><label for='Last_Name'>Apellidos<span style='color:red;'>*</span></label></div><div class='zcwf_col_fld'><input type='text' id='Last_Name' name='Last Name' maxlength='80'></input></div></div>
+<div class='zcwf_row'><div class='zcwf_col_lab'><label for='Email'>Email</label></div><div class='zcwf_col_fld'><input type='text' ftype='email' id='Email' name='Email' maxlength='100'></input></div></div>
+<div class='zcwf_row'><div class='zcwf_col_lab'><label for='Phone'>Teléfono</label></div><div class='zcwf_col_fld'><input type='text' id='Phone' name='Phone' maxlength='30'></input></div></div>
+<div class='zcwf_row'><div class='zcwf_col_lab'><label for='Description'>Descripción</label></div><div class='zcwf_col_fld'><textarea id='Description' name='Description'></textarea></div></div>
+<div class='zcwf_row'><div class='zcwf_col_lab'></div><div class='zcwf_col_fld'><input type='submit' id='formsubmit' class='formsubmit zcwf_button' value='Enviar'></div></div>
+
+<!-- Lead Source field - Hidden but set to Online Store -->
+<input type='hidden' id='Lead_Source' name='Lead Source' value='Online Store'></input>
+</form>
+</div>
+
 <script>
-  const popup = document.getElementById('popup');
-  const closePopup = document.getElementById('closePopup');
+  document.addEventListener('DOMContentLoaded', function() {
+    const popup = document.getElementById('popup');
+    const closePopup = document.getElementById('closePopup');
+    const popupForm = document.getElementById('popupForm');
+    const zohoForm = document.getElementById('webform6541791000000514010');
 
-  function showPopup() {
-    const lastVisit = sessionStorage.getItem('lastVisit');
-    const currentTime = new Date().getTime();
+    function showPopup() {
+      const lastVisit = sessionStorage.getItem('lastVisit');
+      const currentTime = new Date().getTime();
 
-    if (!lastVisit) {
-      popup.classList.remove('hidden');
-      sessionStorage.setItem('lastVisit', currentTime.toString());
+      if (!lastVisit) {
+        popup.classList.remove('hidden');
+        sessionStorage.setItem('lastVisit', currentTime.toString());
+      }
     }
-  }
 
-  closePopup.addEventListener('click', () => {
-    popup.classList.add('hidden');
+    closePopup.addEventListener('click', () => {
+      popup.classList.add('hidden');
+    });
+
+    popupForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const fullName = (document.getElementById('popup_full_name') as HTMLInputElement).value;
+      const email = (document.getElementById('popup_email') as HTMLInputElement).value;
+      const phone = (document.getElementById('popup_phone') as HTMLInputElement).value;
+      const product = (document.getElementById('popup_product') as HTMLInputElement).value;
+
+      // Split full name into first and last name
+      const nameParts = fullName.split(' ');
+      const firstName = nameParts[0];
+      const lastName = nameParts.slice(1).join(' ') || firstName;
+
+      // Fill Zoho form
+      (zohoForm.querySelector('#First_Name') as HTMLInputElement).value = firstName;
+      (zohoForm.querySelector('#Last_Name') as HTMLInputElement).value = lastName;
+      (zohoForm.querySelector('#Email') as HTMLInputElement).value = email;
+      (zohoForm.querySelector('#Phone') as HTMLInputElement).value = phone;
+      (zohoForm.querySelector('#Description') as HTMLInputElement).value = `Producto de interés: ${product}`;
+
+      // Submit Zoho form
+      if (checkMandatory6541791000000514010()) {
+        (zohoForm as HTMLFormElement).submit();
+        popup.classList.add('hidden');
+      }
+    });
+
+    // Show popup after a small delay
+    setTimeout(showPopup, 500);
   });
 
-  // Mostrar el popup después de un pequeño retraso para asegurar que el DOM esté cargado
-  setTimeout(showPopup, 500);
+  function validateEmail6541791000000514010() {
+    var form = document.forms['WebToLeads6541791000000514010'];
+    var emailFld = form.querySelectorAll('[ftype=email]');
+    for (var i = 0; i < emailFld.length; i++) {
+      var emailVal = emailFld[i].value;
+      if((emailVal.replace(/^\s+|\s+$/g, '')).length!=0) {
+        var atpos=emailVal.indexOf('@');
+        var dotpos=emailVal.lastIndexOf('.');
+        if (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailVal.length) {
+          alert('Introduzca una dirección de correo electrónico válida. ');
+          emailFld[i].focus();
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  function checkMandatory6541791000000514010() {
+    var mndFileds = new Array('Last Name');
+    var fldLangVal = new Array('Apellidos');
+    for(var i=0;i<mndFileds.length;i++) {
+      var fieldObj=document.forms['WebToLeads6541791000000514010'][mndFileds[i]];
+      if(fieldObj) {
+        if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length==0) {
+          alert(fldLangVal[i] +' no puede estar vacío.');
+          fieldObj.focus();
+          return false;
+        }
+      }
+    }
+    if(!validateEmail6541791000000514010()){return false;}
+    return true;
+  }
 </script>
