@@ -3,31 +3,31 @@ const pathSteps = [
   {
     title: 'Impulsa tu Potencial',
     copy: 'Desata tu verdadero talento con nosotros. Ofrecemos un camino claro hacia el éxito profesional, con desafíos emocionantes, aprendizaje continuo y oportunidades de crecimiento que te catapultarán hacia nuevas alturas en tu carrera.',
-    image: '/images/potencial.webp',
+    image: '/images/potencial.png',
     direction: 'left-to-right'
   },
   {
     title: 'Celebramos Tus Logros',
     copy: 'Tu éxito es nuestro éxito. Disfruta de un sistema de recompensas que realmente valora tu esfuerzo, desde atractivos incentivos financieros hasta un reconocimiento que te hará brillar. Aquí, cada victoria, grande o pequeña, es celebrada.',
-    image: '/images/logros.webp',
+    image: '/images/logros.png',
     direction: 'right-to-left'
   },
   {
     title: 'Cultura que Inspira',
     copy: 'Únete a un equipo donde tu voz importa. Experimenta la perfecta armonía entre autonomía profesional y colaboración inspiradora. Trabaja en un ambiente que no solo entiende la importancia del equilibrio vida-trabajo, sino que lo promueve activamente.',
-    image: '/images/culture.webp',
+    image: '/images/culture.png',
     direction: 'left-to-right'
   },
 
 ]
 ---
 
-<section class="container mx-auto flex justify-center flex-wrap relative">
+<section class="container mx-auto flex justify-center flex-wrap relativ pt-12 relative">
   {
     pathSteps.map(({title, copy, image, direction}) => {
       return (
         <div class:list={['flex items-center gap-6 md:gap-24 [animation:linear_reveal_both] ![animation-range:entry_5%_cover_30%] ![animation-timeline:view()]', {'flex-col md:flex-row': direction === 'left-to-right', 'flex-col-reverse md:flex-row-reverse': direction === 'right-to-left'}]}>
-          <img src={image} alt="Impulsa tu Potencial" class="w-2/3 md:w-[520px]">
+          <img src={image} alt="Impulsa tu Potencial" class="w-2/3 md:w-[450px]">
           <div class="w-[32ch] md:w-[45ch] bg-white -mt-5 py-3">
             <h3 class="text-gray-15 font-bold text-4xl text-balance mb-4">{title}</h3>
             <p class="text-pretty text-lg leading-6 text-gray-55">{copy}</p>
