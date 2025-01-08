@@ -57,7 +57,12 @@ const { title, hasHero = true, description, image, heroTitle } = Astro.props;
     <!-- End Meta Pixel Code -->
 
     <!-- Google Recaptcha -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6LckJ7EqAAAAABbUp2J5wMio3tRh-MBoepDYcwmo"></script>
+    <script
+      is:inline
+      src="https://www.google.com/recaptcha/api.js?render=6LckJ7EqAAAAABbUp2J5wMio3tRh-MBoepDYcwmo" 
+      async
+      defer
+    ></script>
 
 
 	</head>

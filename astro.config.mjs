@@ -19,15 +19,4 @@ export default defineConfig({
       },
     }),
   ],
-  server: {
-    headers: {
-      "Content-Security-Policy": `
-        default-src 'self';
-        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com;
-        frame-src 'self' https://www.google.com;
-        style-src 'self' 'unsafe-inline';
-        connect-src 'self' https://www.google.com;
-      `.trim().replace(/\s+/g, ' '),
-    }
-  }
 });
