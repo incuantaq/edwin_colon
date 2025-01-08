@@ -1,25 +1,17 @@
 ---
-import Cotizacion from "./Cotizacion";
+import MultiStepForm from "@/components/MultiStepForm";
+import PricingAnimation from "@/components/pricingAnimation";
 ---
 
-<form id="cotizador" class="flex flex-col flex-wrap md:flex-row container mx-auto py-10 pricer-wrapper">
-  <div class="w-full md:w-1/2 md:pr-5 md:min-h-[65vh]">
-    <h3 class="pb-4 font-bold text-xl">Información de contacto</h3>
-    
-    <p class="text-md mb-4">Recuerda puedes ser el felíz ganador de un viaje con todo incluido a Punta Cana.</p>
-    
-    <div>
-      <input type="text" id="full_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Nombre completo" required />
-      <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Email" required />
-      <input type="tel" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Telefono" required />
-      <input type="text" id="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-3" placeholder="Dirección" required />
+<div class="min-h-[85vh] flex items-center relative">
+  <img src="/images/cotizar_banner.webp" alt="cotizar background" class="absolute left-0 top-0 w-full h-full object-cover brightness-[0.4] -z-10" />
+  <div class="container mx-auto flex justify-center items-center py-10 flex-col md:flex-row">
+    <div class="w-full md:w-1/2 shrink-0">
+      <PricingAnimation client:load/>
     </div>
-    <div class="text-center md:text-left w-full mt-6">
-      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Cotizar</button>
-    </div>
+    <MultiStepForm client:load />
   </div>
-  <Cotizacion client:load />
-</form>
+</div>
 
 <!-- Zoho CRM Form - Hidden -->
 <div id='crmWebToEntityForm' class='zcwf_lblLeft crmWebToEntityForm' style='background-color: white;color: black;max-width: 600px;display:none'>
@@ -65,118 +57,3 @@ import Cotizacion from "./Cotizacion";
     </div>
   </form>
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const cotizadorForm = document.getElementById('cotizador');
-    const zohoForm = document.getElementById('webform6541791000000514010') as HTMLFormElement;
-
-    function validateEmail(email: string) {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return emailRegex.test(email);
-    }
-
-    function validateForm(formData: {
-      fullName: string,
-      email: string,
-      phone: string,
-      address: string
-    }) {
-      if (!formData.fullName || formData.fullName.trim().length === 0) {
-        alert('El nombre no puede estar vacío');
-        return false;
-      }
-      
-      if (!formData.email || !validateEmail(formData.email)) {
-        alert('Introduzca una dirección de correo electrónico válida');
-        return false;
-      }
-      
-      if (!formData.phone || formData.phone.trim().length < 10) {
-        alert('Por favor ingrese un número de teléfono válido');
-        return false;
-      }
-      
-      if (!formData.address || formData.address.trim().length === 0) {
-        alert('La dirección no puede estar vacía');
-        return false;
-      }
-      
-      return true;
-    }
-
-    cotizadorForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const formData = {
-        fullName: (document.getElementById('full_name') as HTMLInputElement).value,
-        email: (document.getElementById('email') as HTMLInputElement).value,
-        phone: (document.getElementById('phone') as HTMLInputElement).value,
-        address: (document.getElementById('address') as HTMLInputElement).value
-      };
-
-      if (!validateForm(formData)) {
-        return;
-      }
-
-      // Split full name into first and last name
-      const nameParts = formData.fullName.split(' ');
-      const firstName = nameParts[0];
-      const lastName = nameParts.slice(1).join(' ') || firstName;
-
-      // Fill Zoho form
-      (zohoForm.querySelector('#First_Name') as HTMLInputElement).value = firstName;
-      (zohoForm.querySelector('#Last_Name') as HTMLInputElement).value = lastName;
-      (zohoForm.querySelector('#Email') as HTMLInputElement).value = formData.email;
-      (zohoForm.querySelector('#Phone') as HTMLInputElement).value = formData.phone;
-      (zohoForm.querySelector('#Street') as HTMLInputElement).value = formData.address;
-
-      // Get selected product
-      const selectedProduct = document.querySelector('.product-picker.selected') as HTMLElement;
-      const productName = selectedProduct ? selectedProduct.textContent : 'No product selected';
-
-      // Set description
-      (zohoForm.querySelector('#Description') as HTMLTextAreaElement).value = `Producto de interés: ${productName}`;
-
-      // Submit form using Zoho's validation function
-      if (validateEmail6541791000000514010() && checkMandatory6541791000000514010()) {
-        zohoForm.submit();
-      }
-    });
-  });
-
-  // Zoho's required validation functions
-  function validateEmail6541791000000514010() {
-    var form = document.forms['WebToLeads6541791000000514010'];
-    var emailFld = form.querySelectorAll('[ftype=email]');
-    for (var i = 0; i < emailFld.length; i++) {
-      var emailVal = emailFld[i].value;
-      if((emailVal.replace(/^\s+|\s+$/g, '')).length!=0) {
-        var atpos=emailVal.indexOf('@');
-        var dotpos=emailVal.lastIndexOf('.');
-        if (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailVal.length) {
-          alert('Introduzca una dirección de correo electrónico válida');
-          emailFld[i].focus();
-          return false;
-        }
-      }
-    }
-    return true;
-  }
-
-  function checkMandatory6541791000000514010() {
-    var mndFileds = new Array('Last Name');
-    var fldLangVal = new Array('Apellidos');
-    for(var i=0;i<mndFileds.length;i++) {
-      var fieldObj=document.forms['WebToLeads6541791000000514010'][mndFileds[i]];
-      if(fieldObj) {
-        if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length==0) {
-          alert(fldLangVal[i] +' no puede estar vacío.');
-          fieldObj.focus();
-          return false;
-        }
-      }
-    }
-    return true;
-  }
-</script>

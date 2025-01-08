@@ -13,6 +13,8 @@
     "@astrojs/partytown": "^2.1.2",
     "@astrojs/react": "^3.6.2",
     "@astrojs/tailwind": "^5.1.2",
+    "@astrojs/vercel": "^8.0.1",
+    "@lottiefiles/dotlottie-react": "^0.12.1",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "astro": "^4.15.2",

@@ -1,26 +1,20 @@
 ---
-import TypingAnimation from "@/components/ui/typing-animation"
+const { title } = Astro.props;
 
 const slide = {
-    image: '/images/hero_home.webp',
-    title: 'Líderes en Energía Solar'
-  }
+  image: '/images/hero_home.webp',
+}
 ---
 <section class="relative">
   <div class="relative overflow-hidden">
-    <div class="overflow-hidden w-full h-[550px] md:h-[650px]">
-      <img src={slide.image} alt="Hero" class="w-full h-full">
-      <div class="container absolute h-full top-0 left-1/2 -translate-x-1/2 pb-16">
-        <div class="flex flex-col h-full justify-center text-5xl text-balance w-[650px] max-w-full md:text-6xl mx-auto">
-          <TypingAnimation
-            client:load
-            className="text-primary font-raleway font-black text-center"
-            text={slide.title}
-          />
-        </div>
+    <div class="overflow-hidden w-full h-[450px] md:h-[500px]">
+      <img src={slide.image} alt="Hero" class="w-full h-full object-cover">
+      <div class="container absolute h-full top-0 left-1/2 -translate-x-1/2">
+        <h2 class="flex flex-col h-full justify-center text-4xl text-balance text-center max-w-full md:text-7xl">
+          <span class="text-white font-raleway font-black">{title}</span>
+        </h2>
       </div>
     </div>
-    <img src="/images/irregular_form.png" alt="union" class="absolute top-[90%] md:top-[80%] left-0 w-full">
   </div>
 </section>
 
