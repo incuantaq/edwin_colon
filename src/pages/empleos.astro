@@ -6,10 +6,11 @@ import Layout from '../layouts/Layout.astro';
 const title = "Edwin | Empleos";
 const description = "Únete a nuestro equipo de energía solar y techos. Oportunidades de carrera en instalación, ventas y servicio al cliente. Crecimiento profesional y trabajo significativo en energía limpia.";
 const metaImg = '/logo.svg'
+const heroTitle = 'Únete al equipo de la buena energía';
 
 ---
 
-<Layout title={title} description={description} hasHero={true} image={metaImg}>
+<Layout title={title} description={description} hasHero={true} image={metaImg} heroTitle={heroTitle}>
   <Path />
 	<CareersForm />
 </Layout>

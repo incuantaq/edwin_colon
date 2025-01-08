@@ -6,6 +6,8 @@ import react from '@astrojs/react';
 
 import partytown from '@astrojs/partytown';
 
+import vercel from '@astrojs/vercel';
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
@@ -18,5 +20,8 @@ export default defineConfig({
         forward: ["dataLayer.push"],
       },
     }),
-  ]
+  ],
+
+  output: 'server',
+  adapter: vercel()
 });

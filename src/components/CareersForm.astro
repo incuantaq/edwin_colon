@@ -2,21 +2,21 @@
 ---
 <section class="careers-form">
   <div class="container mt-10 mx-auto py-16 flex items-center flex-col">
-    <h3 class="max-w-screen-md w-full text-gray-15 font-bold text-4xl mb-12">Estoy interesado!</h3>
+    <h3 class="max-w-screen-md w-full text-gray-15 font-bold text-4xl mb-12">¡Estoy interesado!</h3>
     <form class="max-w-screen-md w-full flex flex-wrap gap-5">
-      <p>Hola mi nombre es </p>
-      <input type="text" name="name" id="name" required placeholder="Nombre">
-      <p>mi número de contacto es </p>
-      <input type="tel" name="Telefono" id="telefono" required placeholder="Telefono">
-      <p>y mi email </p>
-      <input type="email" name="email" id="email" required placeholder="Email" class="min-w-[270px]">
-      <p class="w-full">Estoy listo para ser parte del equipo!</p>
+      <p>Hola, mi nombre es: </p>
+      <input type="text" name="name" id="name" required placeholder="Nombre" class="w-[45ch]">
+      <p>Mi número de contacto es: </p>
+      <input type="tel" name="Telefono" id="telefono" required placeholder="Telefono" class="w-[45ch]">
+      <p>Mi email es: </p>
+      <input type="email" name="email" id="email" required placeholder="Email" class="w-[45ch]">
+      <p class="w-full">¡Estoy listo para ser parte del equipo!</p>
       <div class="flex items-center">
-        <input required id="link-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-        <label for="link-checkbox" class="ms-2 text-sm font-medium text-gray-900">Estoy de acuerdo <a target="_blank" href="/legal" class="text-[#1538a9] hover:underline">términos y condiciones</a>.</label>
+        <input required id="link-checkbox" type="checkbox" value="" class="w-4 h-4 text-secondary bg-gray-100 border-gray-300 rounded focus:ring-secondary">
+        <label for="link-checkbox" class="ms-2 text-sm font-medium text-gray-900">Estoy de acuerdo <a target="_blank" href="/legal" class="text-[#0e0e10] hover:underline">términos y condiciones</a>.</label>
       </div>
       <div class="w-full">
-        <button type="submit">Enviar</button>
+        <button class="bg-[#1e429b] hover:bg-secondary transition-colors text-white font-bold py-2 px-4 rounded">Enviar</button>
       </div>
     </form>
   </div>
@@ -74,13 +74,12 @@
 
 <style scoped>
   .careers-form{
-    background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255,255,255,0.00001) 0%, rgba(250,220,147,1) 14%, rgba(249,194,63,1) 37%);
+    background: rgb(249,194,63,1);
   }
 
   p{
-    font-size: 28px;
-    line-height: 56px;
+    font-size: 20px;
+    line-height: 36px;
     color: #1a1a1a;
   }
 
@@ -90,19 +89,20 @@
     background-color: transparent;
     border-bottom: 1px solid #1a1a1a;
     font-size: 16px;
+    border-radius: 0;
   }
 
   input::placeholder{
     color: #393939;
   }
 
-  button[type="submit"]{
+  /* button[type="submit"]{
     background-color: #1a1a1a;
     color: white;
     padding: 10px 20px;
     border-radius: 15px;
     font-weight: bold;
-  }
+  } */
 
   #crmWebToEntityForm{
     padding: 0;

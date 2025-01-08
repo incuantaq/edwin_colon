@@ -12,10 +12,11 @@ interface Props {
 	title: string;
   description: string;
   hasHero: boolean;
+  heroTitle: string;
   image: string;
 }
 
-const { title, hasHero = true, description, image } = Astro.props;
+const { title, hasHero = true, description, image, heroTitle } = Astro.props;
 ---
 
 <!doctype html>
@@ -49,15 +50,20 @@ const { title, hasHero = true, description, image } = Astro.props;
       'https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', '581678747561230');
       fbq('track', 'PageView');
-      </script>
-      <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=581678747561230&ev=PageView&noscript=1"
-      /></noscript>
-      <!-- End Meta Pixel Code -->
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=581678747561230&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <!-- Google Recaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6LckJ7EqAAAAABbUp2J5wMio3tRh-MBoepDYcwmo"></script>
+
+
 	</head>
 	<body>
     <Header />
-    {hasHero && <Hero />}
+    {hasHero && <Hero title={heroTitle} />}
 		<slot />
     <Footer />
     <Whatsapp />
