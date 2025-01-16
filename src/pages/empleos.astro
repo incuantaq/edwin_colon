@@ -7,10 +7,14 @@ const title = "Edwin | Empleos";
 const description = "Únete a nuestro equipo de energía solar y techos. Oportunidades de carrera en instalación, ventas y servicio al cliente. Crecimiento profesional y trabajo significativo en energía limpia.";
 const metaImg = '/logo.svg'
 const heroTitle = 'Únete al equipo de la buena energía';
+const images = {
+  desktop: '/images/hero_home.webp',
+  mobile: '/images/hero_home.webp',
+}
 
 ---
 
-<Layout title={title} description={description} hasHero={true} image={metaImg} heroTitle={heroTitle}>
+<Layout title={title} description={description} hasHero={true} image={metaImg} heroTitle={heroTitle} heroImages={images}>
   <Path />
 	<CareersForm />
 </Layout>
