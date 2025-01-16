@@ -7,16 +7,24 @@ import Footer from '@components/Footer.astro';
 import { ViewTransitions } from 'astro:transitions';
 import GoogleAnalytics from '@/components/GoogleAnalytics.astro';
 
+interface HeroImages {
+  desktop: string;
+  mobile: string;
+}
 
 interface Props {
 	title: string;
   description: string;
-  hasHero: boolean;
-  heroTitle: string;
   image: string;
+  hasHero: boolean;
+  heroTitle?: string;
+  heroImages?: HeroImages;
+  heroCtaLabel?: string;
+  heroCtaUrl?: string;
+  hasHeroCta?: boolean;
 }
 
-const { title, hasHero = true, description, image, heroTitle } = Astro.props;
+const { title, hasHero = true, description, image, heroTitle, heroImages, hasHeroCta = false, heroCtaLabel, heroCtaUrl } = Astro.props;
 ---
 
 <!doctype html>
@@ -68,7 +76,7 @@ const { title, hasHero = true, description, image, heroTitle } = Astro.props;
 	</head>
 	<body>
     <Header />
-    {hasHero && <Hero title={heroTitle} />}
+    {hasHero && <Hero title={heroTitle} heroImages={heroImages} hasHeroCta={hasHeroCta} heroCtaLabel={heroCtaLabel} heroCtaUrl={heroCtaUrl} />}
 		<slot />
     <Footer />
     <Whatsapp />
@@ -126,6 +134,17 @@ const { title, hasHero = true, description, image, heroTitle } = Astro.props;
   .container{
     width: 90%;
     max-width: 1152px;
+  }
+  
+  .container.full-width{
+    width: 100%;
+  }
+  
+  @media (width >= 768px) {
+    .container.full-width{
+      width: 90%;
+      max-width: 1152px;
+    }
   }
 
   @keyframes reveal {

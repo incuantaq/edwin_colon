@@ -10,9 +10,20 @@ const title = "Edwin | Windmar";
 const description = "Soluciones de energía solar para hogares: paneles solares de alta eficiencia, baterías de almacenamiento y servicios profesionales de reparación de techos. Ahorra energía y mejora tu hogar con nuestros expertos.";
 const metaImg = '/logo.svg'
 
+const images = {
+  desktop: '/images/offers/banner_desktop.webp',
+  mobile: '/images/offers/banner_mobile.webp',
+}
+const heroCta = {
+  label: 'Comprar ya',
+  url: 'https://wa.link/qu92ul',
+  display: true,
+}
+
+
 ---
 
-<Layout title={title} description={description} hasHero={true} image={metaImg} heroTitle="Líderes en Energía Solar">
+<Layout title={title} description={description} hasHero={true} image={metaImg} heroImages={images} hasHeroCta={heroCta.display} heroCtaLabel={heroCta.label} heroCtaUrl={heroCta.url}>
   <About />
   <Products />
   <Testimonials />
