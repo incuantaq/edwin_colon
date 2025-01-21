@@ -10,7 +10,7 @@ import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
+  output: 'hybrid',
   integrations: [
     tailwind({
       applyBaseStyles: false,
