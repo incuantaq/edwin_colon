@@ -79,7 +79,8 @@ document.addEventListener('DOMContentLoaded', function() {
         firstName,
         lastName,
         phone: formData.phone,
-        email: formData.email
+        email: formData.email,
+        source: 'Recomendación de empleado',
       })
     })
     .then((response) => response.json())

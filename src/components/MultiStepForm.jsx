@@ -138,7 +138,8 @@ const MultiStepForm = () => {
           phone: formData.phone,
           email: formData.email,
           street: formData.address,
-          description: description
+          description: description,
+          source: 'Online Store',
         })
       })
       .then((response) => response.json())
