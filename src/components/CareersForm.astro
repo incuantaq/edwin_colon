@@ -20,56 +20,6 @@
       </div>
     </form>
   </div>
-
-  <!-- Zoho CRM Form - Hidden -->
-  <div id='crmWebToEntityForm' class='zcwf_lblLeft crmWebToEntityForm' style='background-color: white;color: black;max-width: 600px;'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-   
-    <form id='webform6541791000000519013' action='https://crm.zoho.com/crm/WebToLeadForm' name=WebToLeads6541791000000519013 method='POST' onSubmit='javascript:document.charset="UTF-8"; return checkMandatory6541791000000519013()' accept-charset='UTF-8'>
-      <input type='text' style='display:none;' name='xnQsjsdp' value='5bf77352474c975a39bece31751a98765a6b475ff2bd00c15eab00a7b262f3ca'></input> 
-      <input type='hidden' name='zc_gad' id='zc_gad' value=''></input>
-      <input type='text' style='display:none;' name='xmIwtLD' value='fd8f0714ba93fd2362472f9437b288ac383be5af5cdee8f853db97ae057fae61f279162832f62710c8c89b13d247c0c9'></input> 
-      <input type='text' style='display:none;' name='actionType' value='TGVhZHM='></input>
-      <input type='text' style='display:none;' name='returnURL' value='https&#x3a;&#x2f;&#x2f;pr-solarenergy.com&#x2f;thank-you'></input>
-      
-      <div class='zcwf_row'>
-        <div class='zcwf_col_lab'><label for='First_Name'>Nombre</label></div>
-        <div class='zcwf_col_fld'>
-          <input type='text' id='First_Name' name='First Name' maxlength='40'></input>
-        </div>
-      </div>
-      
-      <div class='zcwf_row'>
-        <div class='zcwf_col_lab'><label for='Last_Name'>Apellidos<span style='color:red;'>*</span></label></div>
-        <div class='zcwf_col_fld'>
-          <input type='text' id='Last_Name' name='Last Name' maxlength='80'></input>
-        </div>
-      </div>
-      
-      <div class='zcwf_row'>
-        <div class='zcwf_col_lab'><label for='Phone'>Teléfono</label></div>
-        <div class='zcwf_col_fld'>
-          <input type='text' id='Phone' name='Phone' maxlength='30'></input>
-        </div>
-      </div>
-      
-      <div class='zcwf_row'>
-        <div class='zcwf_col_lab'><label for='Email'>Email</label></div>
-        <div class='zcwf_col_fld'>
-          <input type='text' ftype='email' id='Email' name='Email' maxlength='100'></input>
-        </div>
-      </div>
-      
-      <div class='zcwf_row wfrm_fld_dpNn'>
-        <div class='zcwf_col_lab'><label for='Lead_Source'>Lead Source</label></div>
-        <div class='zcwf_col_fld'>
-          <select id='Lead_Source' name='Lead Source'>
-            <option selected value='Recomendación de empleado'>Recomendación de empleado</option>
-          </select>
-        </div>
-      </div>
-    </form>
-  </div>
 </section>
 
 <style scoped>
@@ -95,29 +45,11 @@
   input::placeholder{
     color: #393939;
   }
-
-  /* button[type="submit"]{
-    background-color: #1a1a1a;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 15px;
-    font-weight: bold;
-  } */
-
-  #crmWebToEntityForm{
-    padding: 0;
-    width: 0;
-    height: 0;
-    visibility: hidden;
-    position: fixed;
-    z-index: -100;
-  }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const customForm = document.querySelector('.careers-form form');
-  const zohoForm = document.getElementById('webform6541791000000519013') as HTMLFormElement;
 
   customForm.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -138,62 +70,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const nameParts = formData.name.split(' ');
     const firstName = nameParts[0];
     const lastName = nameParts.slice(1).join(' ') || firstName;
-
-    // Fill Zoho form
-    (zohoForm.querySelector('#First_Name') as HTMLInputElement).value = firstName;
-    (zohoForm.querySelector('#Last_Name') as HTMLInputElement).value = lastName;
-    (zohoForm.querySelector('#Phone') as HTMLInputElement).value = formData.phone;
-    (zohoForm.querySelector('#Email') as HTMLInputElement).value = formData.email;
-
-    // Submit form using Zoho's validation functions
-    if (validateEmail6541791000000519013() && checkMandatory6541791000000519013()) {
-      zohoForm.submit();
-    }
+    fetch('/api/sendLead', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        firstName,
+        lastName,
+        phone: formData.phone,
+        email: formData.email,
+        source: 'Recomendación de empleado',
+      })
+    })
+    .then((response) => response.json())
+    .then((result) => {
+      if (result.message) {
+        window.location.href = '/thank-you';
+      } else {
+        console.log("Error:", result);
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   });
 });
-
-function validateEmail6541791000000519013() {
-  var form = document.forms['WebToLeads6541791000000519013'];
-  var emailFld = form.querySelectorAll('[ftype=email]');
-  for (var i = 0; i < emailFld.length; i++) {
-    var emailVal = emailFld[i].value;
-    if((emailVal.replace(/^\s+|\s+$/g, '')).length!=0) {
-      var atpos=emailVal.indexOf('@');
-      var dotpos=emailVal.lastIndexOf('.');
-      if (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailVal.length) {
-        alert('Introduzca una dirección de correo electrónico válida');
-        emailFld[i].focus();
-        return false;
-      }
-    }
-  }
-  return true;
-}
-
-function checkMandatory6541791000000519013() {
-  var mndFileds = new Array('Last Name');
-  var fldLangVal = new Array('Apellidos');
-  for(var i=0;i<mndFileds.length;i++) {
-    var fieldObj=document.forms['WebToLeads6541791000000519013'][mndFileds[i]];
-    if(fieldObj) {
-      if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length==0) {
-        alert(fldLangVal[i] +' no puede estar vacío.');
-        fieldObj.focus();
-        return false;
-      }
-    }
-  }
-  return true;
-}
-
-function addAriaSelected6541791000000519013() {
-  var optionElem = event.target;
-  if (optionElem instanceof HTMLSelectElement) {
-    var previousSelectedOption = optionElem.querySelector('[aria-selected=true]');
-    if (previousSelectedOption) {
-      previousSelectedOption.removeAttribute('aria-selected');
-    }
-    optionElem.options[optionElem.selectedIndex].setAttribute('aria-selected', 'true');
-  }
-}
 </script>
