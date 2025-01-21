@@ -8,6 +8,7 @@ import partytown from '@astrojs/partytown';
 
 // https://astro.build/config
 export default defineConfig({
+  output: 'static',
   integrations: [
     tailwind({
       applyBaseStyles: false,
