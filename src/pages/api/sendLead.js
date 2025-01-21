@@ -1,23 +1,23 @@
 export const prerender = false;
 
 // Zoho OAuth Config
-const CLIENT_ID = '1000.SKMGWASFM5Q6Y61JVQX9S586VFJONT';
-const CLIENT_SECRET = '2db0fa41559b42d869c901b434b4a61790fc56014c';
-const REFRESH_TOKEN = '1000.58f3b8c41ee4802ec727d8b40318cfc8.dc9ccf7431a2897ba1af878191e1d4c4';
+const CLIENT_ID = import.meta.env.CLIENT_ID;
+const CLIENT_SECRET = import.meta.env.CLIENT_SECRET;
+const REFRESH_TOKEN = import.meta.env.REFRESH_TOKEN;
 
-async function refreshAccessToken(refreshToken) {
+async function refreshAccessToken() {
     try {
         const response = await fetch('https://accounts.zoho.com/oauth/v2/token', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({
-            refresh_token: REFRESH_TOKEN,
-            client_id: CLIENT_ID,
-            client_secret: CLIENT_SECRET,
-            grant_type: 'refresh_token',
-        }),
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams({
+              refresh_token: REFRESH_TOKEN,
+              client_id: CLIENT_ID,
+              client_secret: CLIENT_SECRET,
+              grant_type: 'refresh_token',
+          }),
         });
 
         const data = await response.json();
@@ -38,7 +38,7 @@ export async function POST({ request }) {
   try {
     const token = await refreshAccessToken();
     const formData = await request.json();
-    const { firstName, lastName, email, phone, street, description } = formData;
+    const { firstName, lastName, email, phone, street, description, source } = formData;
 
     if (!firstName || !lastName || !email || !phone) {
       return new Response(
@@ -61,7 +61,8 @@ export async function POST({ request }) {
           Phone: phone,
           Email: email,
           Street: street,
-          Description: description
+          Description: description,
+          Lead_Source: source,
         }]
       })
     });
