@@ -6,11 +6,8 @@ import react from '@astrojs/react';
 
 import partytown from '@astrojs/partytown';
 
-import vercel from '@astrojs/vercel';
-
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
   integrations: [
     tailwind({
       applyBaseStyles: false,
@@ -22,5 +19,4 @@ export default defineConfig({
       },
     }),
   ],
-  adapter: vercel(),
 });

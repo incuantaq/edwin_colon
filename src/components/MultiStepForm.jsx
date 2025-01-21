@@ -112,10 +112,24 @@ const MultiStepForm = () => {
         return;
       }
 
+      // Fill Zoho form
+      const zohoForm = document.getElementById('webform6541791000000514010');
+      if (!zohoForm) {
+        console.error('Zoho form not found');
+        return;
+      }
+
       // Split full name into first and last name
       const nameParts = formData.fullName.split(' ');
       const firstName = nameParts[0];
       const lastName = nameParts.slice(1).join(' ') || firstName;
+
+      // Fill hidden Zoho form fields
+      zohoForm.querySelector('#First_Name').value = firstName;
+      zohoForm.querySelector('#Last_Name').value = lastName;
+      zohoForm.querySelector('#Email').value = formData.email;
+      zohoForm.querySelector('#Phone').value = formData.phone;
+      zohoForm.querySelector('#Street').value = formData.address;
 
       // Set description with product specific details
       let description = `Producto de interés: ${formData.selectedProduct}\n`;
@@ -126,33 +140,61 @@ const MultiStepForm = () => {
       } else if (formData.selectedProduct === 'Roofing') {
         description += `Área del techo: ${formData.roofArea} pies cuadrados`;
       }
+      zohoForm.querySelector('#Description').value = description;
 
-      fetch('/api/sendLead', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          phone: formData.phone,
-          email: formData.email,
-          street: formData.address,
-          description: description,
-          source: 'Online Store',
-        })
-      })
-      .then((response) => response.json())
-      .then((result) => {
-        if (result.message) {
-          window.location.href = '/thank-you';
-        } else {
-          console.log("Error", result);
+      function validateEmail6541791000000514010() {
+        var form = document.forms['WebToLeads6541791000000514010'];
+        var emailFld = form.querySelectorAll('[ftype=email]');
+        for (var i = 0; i < emailFld.length; i++) {
+          var emailVal = emailFld[i].value;
+          if((emailVal.replace(/^\s+|\s+$/g, '')).length!=0) {
+            var atpos=emailVal.indexOf('@');
+            var dotpos=emailVal.lastIndexOf('.');
+            if (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailVal.length) {
+              alert('Introduzca una dirección de correo electrónico válida');
+              emailFld[i].focus();
+              return false;
+            }
+          }
         }
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+        return true;
+      }
+    
+      function checkMandatory6541791000000514010() {
+        var mndFileds = new Array('Last Name');
+        var fldLangVal = new Array('Apellidos');
+        for(var i=0;i<mndFileds.length;i++) {
+          var fieldObj=document.forms['WebToLeads6541791000000514010'][mndFileds[i]];
+          if(fieldObj) {
+            if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length==0) {
+              alert(fldLangVal[i] +' no puede estar vacío.');
+              fieldObj.focus();
+              return false;
+            }
+          }
+        }
+        return true;
+      }
+
+      // Submit form using Zoho's validation functions
+      if (typeof validateEmail6541791000000514010 === 'function' && 
+          typeof checkMandatory6541791000000514010 === 'function') {
+        if (validateEmail6541791000000514010() && checkMandatory6541791000000514010()) {
+          grecaptcha.ready(function(){
+            grecaptcha.execute('6LckJ7EqAAAAABbUp2J5wMio3tRh-MBoepDYcwmo', {action: 'submit'})
+              .then(function(token) {
+                console.log(token);
+                zohoForm.submit();
+                setIsSubmitted(true);
+                setStep(3);
+              });
+          });
+          return;
+        }
+      } else {
+        console.error('Zoho validation functions not found');
+        return;
+      }
 
       return;
     }

@@ -12,3 +12,48 @@ import PricingAnimation from "@/components/pricingAnimation";
     <MultiStepForm client:load />
   </div>
 </div>
+
+<!-- Zoho CRM Form - Hidden -->
+<div id='crmWebToEntityForm' class='zcwf_lblLeft crmWebToEntityForm' style='background-color: white;color: black;max-width: 600px;display:none'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+   
+  <form id='webform6541791000000514010' action='https://crm.zoho.com/crm/WebToLeadForm' name=WebToLeads6541791000000514010 method='POST' accept-charset='UTF-8'>
+    <input type='text' style='display:none;' name='xnQsjsdp' value='1af81063d22be2c0d080fee273521ee1ab7bea608e69d5870f5385260990d368'></input> 
+    <input type='hidden' name='zc_gad' id='zc_gad' value=''></input>
+    <input type='text' style='display:none;' name='xmIwtLD' value='0559e73e8707136545e4b302620b882d5e868d3e879104a97bb39c38b855f4571c3376e4f0ff62a7b83452a545537d01'></input> 
+    <input type='text' style='display:none;' name='actionType' value='TGVhZHM='></input>
+    <input type='text' style='display:none;' name='returnURL' value='https&#x3a;&#x2f;&#x2f;pr-solarenergy.com&#x2f;thank-you'></input>
+
+    <div class='zcwf_row'><div class='zcwf_col_lab'><label for='First_Name'>Nombre</label></div>
+      <div class='zcwf_col_fld'><input type='text' id='First_Name' name='First Name' maxlength='40'></input></div>
+    </div>
+    
+    <div class='zcwf_row'><div class='zcwf_col_lab'><label for='Last_Name'>Apellidos<span style='color:red;'>*</span></label></div>
+      <div class='zcwf_col_fld'><input type='text' id='Last_Name' name='Last Name' maxlength='80'></input></div>
+    </div>
+    
+    <div class='zcwf_row'><div class='zcwf_col_lab'><label for='Email'>Email</label></div>
+      <div class='zcwf_col_fld'><input type='text' ftype='email' id='Email' name='Email' maxlength='100'></input></div>
+    </div>
+    
+    <div class='zcwf_row'><div class='zcwf_col_lab'><label for='Phone'>Teléfono</label></div>
+      <div class='zcwf_col_fld'><input type='text' id='Phone' name='Phone' maxlength='30'></input></div>
+    </div>
+    
+    <div class='zcwf_row'><div class='zcwf_col_lab'><label for='Street'>Calle</label></div>
+      <div class='zcwf_col_fld'><input type='text' id='Street' name='Street' maxlength='250'></input></div>
+    </div>
+    
+    <div class='zcwf_row'><div class='zcwf_col_lab'><label for='Description'>Descripción</label></div>
+      <div class='zcwf_col_fld'><textarea id='Description' name='Description'></textarea></div>
+    </div>
+    
+    <div class='zcwf_row'><div class='zcwf_col_lab'><label for='Lead_Source'>Lead Source</label></div>
+      <div class='zcwf_col_fld'>
+        <select class='zcwf_col_fld_slt' id='Lead_Source' name='Lead Source'>
+          <option selected value='Online Store'>Online Store</option>
+        </select>
+      </div>
+    </div>
+  </form>
+</div>
