@@ -1,4 +1,6 @@
 ---
+import ContactUs from "./ContactUs.astro";
+
 const { title, heroImages, hasHeroCta, heroCtaLabel, heroCtaUrl } = Astro.props;
 
 console.log(heroImages);
@@ -8,21 +10,24 @@ const slide = {
   mobile: heroImages.mobile,
 }
 ---
-<section class="relative md:py-8">
-  <div class="container full-width relative h-full top-0 left-1/2 -translate-x-1/2 md:rounded-xl overflow-hidden">
-    <img src={slide.desktop} alt="Hero" class="hidden sm:block w-full h-full object-cover aspect-video">
-    <img src={slide.mobile} alt="Hero" class="block sm:hidden w-full h-full object-cover aspect-[425/600]">
-    {title && 
-      <h2 class="w-full absolute top-0 left-0 z-10 flex flex-col h-full justify-center text-4xl text-balance text-center max-w-full md:text-7xl">
-        <span class="text-white font-raleway font-black">{title}</span>
-      </h2>
-    }
-    {hasHeroCta && 
-      <a target="_blank" href={heroCtaUrl} class="text-white border border-primary bg-primary font-extrabold font-raleway rounded-lg text-xl px-5 py-2.5 text-center inline-block absolute bottom-36 left-1/2 -translate-x-1/2 md:bottom-10 left-[30%] lg:bottom-14">
-        {heroCtaLabel}
-      </a>
-    }
+<section class="flex flex-col sm:flex-row sm:flex-wrap px-4 sm:px-8 md:px-16 lg:px-32 xl:px-48 md:p-8">
+  <div class="relative w-full sm:flex-1">
+    <div class="container full-width relative h-full top-0 left-1/2 -translate-x-1/2 md:rounded-xl overflow-hidden">
+      <img src={slide.desktop} alt="Hero" class="hidden sm:block w-full h-full object-cover aspect-video">
+      <img src={slide.mobile} alt="Hero" class="block sm:hidden w-full h-full object-cover aspect-[425/600]">
+      {title && 
+        <h2 class="w-full absolute top-0 left-0 z-10 flex flex-col h-full justify-center text-4xl text-balance text-center max-w-full md:text-7xl">
+          <span class="text-white font-raleway font-black">{title}</span>
+        </h2>
+      }
+      {hasHeroCta && 
+        <a target="_blank" href={heroCtaUrl} class="text-white border border-primary bg-primary font-extrabold font-raleway rounded-lg text-xl px-5 py-2.5 text-center inline-block absolute bottom-36 left-1/2 -translate-x-1/2 md:bottom-10 left-[30%] lg:bottom-14">
+          {heroCtaLabel}
+        </a>
+      }
+    </div>
   </div>
+  <ContactUs class="h-full w-full pr-8 md:w-auto" />
 </section>
 
 <script>

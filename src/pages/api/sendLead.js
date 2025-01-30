@@ -40,7 +40,7 @@ export async function POST({ request }) {
     const formData = await request.json();
     const { firstName, lastName, email, phone, street, description, source } = formData;
 
-    if (!firstName || !lastName || !email || !phone) {
+    if (!firstName || !lastName || !email) {
       return new Response(
         JSON.stringify({ error: 'Missing data' }),
         { status: 400 }
