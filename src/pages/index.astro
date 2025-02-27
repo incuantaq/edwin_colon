@@ -1,5 +1,6 @@
 ---
 import Reward from '@components/Reward.astro';
+import Allies from '../components/Allies.astro';
 import About from '../components/about.astro';
 import Products from '../components/products.astro';
 import Layout from '../layouts/Layout.astro';
@@ -24,6 +25,7 @@ const heroCta = {
 ---
 
 <Layout title={title} description={description} hasHero={true} image={metaImg} heroImages={images} hasHeroCta={heroCta.display} heroCtaLabel={heroCta.label} heroCtaUrl={heroCta.url}>
+  <Allies />
   <About />
   <Products />
   <Testimonials />
